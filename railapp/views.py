@@ -8,4 +8,4 @@ def reg(request):
 def log(request):
     return render(request, 'railapp/login.html')
 def Contact(request):
-    return render(request, 'railapp/login.html')
+    return render(request, 'railapp/contact.html')
