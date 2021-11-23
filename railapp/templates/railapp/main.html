@@ -6,7 +6,7 @@
     <meta charset='utf-8'>
     <!-- <meta http-equiv='X-UA-Compatible' content='IE=edge'> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-    
+    {% comment %} <link rel="shortcut icon" href="{% static 'images/metrorail.ico' %}" /> {% endcomment %}
     <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/footer.css' %}">
     <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -29,7 +29,9 @@
 </body>
 
     <nav class="navbar navbar-dark bg-light">
+    
     <ul class="mynavbar">
+    {% comment %} <li> <a class="navbar-brand" href="#"> <img id="brand" src="{% static 'images/metrorail.png' %}" alt="logo"></a> </li> {% endcomment %}
     <li class="current"><a href="#" data-hover="Home">Home</a></li>
     <li><a href="#" data-hover="Buy Ticket">Buy Ticket</a></li>
     <li><a href="#" data-hover="Schedule">Schedule</a></li>
