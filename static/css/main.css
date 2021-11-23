@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap');
+        .mynavbar {
+            font-family: 'Outfit', sans-serif;
+            text-align: center !important;
+            display: inline-block;
+            justify-content: center !important;
+        }
+        .mynavbar * {
+            box-sizing: border-box;
+            -webkit-transition: all 0.35s ease;
+            transition: all 0.35s ease;
+        }
+        .mynav ul{
+            list-style: table;
+            text-align: center;
+        }
+        .mynavbar li {
+            display: inline-block;
+            list-style: outside none none;
+            margin: 0 1.5em;
+            overflow: hidden;
+        }
+        .mynavbar a {
+            padding: 0.3em 0;
+            color: rgba(0, 0, 0, 0.5);
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+            margin: 0;
+            text-decoration: none;
+        }
+        .mynavbar a:before,
+        .mynavbar a:after {
+            position: absolute;
+            -webkit-transition: all 0.35s ease;
+            transition: all 0.35s ease;
+        }
+        .mynavbar a:before {
+            bottom: 100%;
+            display: block;
+            height: 5px;
+            width: 100%;
+            content: "";
+            background-color: rgb(109, 16, 16);
+        }
+        .mynavbar a:after {
+            padding: 0.3em 0;
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            content: attr(data-hover);
+            color: rgb(0, 94, 8);
+            white-space: nowrap;
+        }
+        .mynavbar li:hover a,
+        .mynavbar .current a {
+            transform: translateY(100%);
+        }
+
+
+        
