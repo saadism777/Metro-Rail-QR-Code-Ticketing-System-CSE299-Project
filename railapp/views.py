@@ -7,3 +7,5 @@ def reg(request):
     return render(request, 'railapp/registration.html')
 def log(request):
     return render(request, 'railapp/login.html')
+def Contact(request):
+    return render(request, 'railapp/login.html')
