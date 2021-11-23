@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 {% load static %}
 <html>
@@ -34,8 +35,8 @@
     <li><a href="#" data-hover="Schedule">Schedule</a></li>
     <li><a href="#" data-hover="FAQ">FAQ</a></li>
     <li><a href="#" data-hover="About Us">About Us</a></li>
-    <li><a href="#" data-hover="Login">Login</a></li>
-    <li><a href="#" data-hover="Register">Register</a></li>
+    <li><a href="{% url 'log' %}" data-hover="Login">Login</a></li>
+    <li><a href="{% url 'reg' %}" data-hover="Register">Register</a></li>
 
 </ul>
 </nav>
