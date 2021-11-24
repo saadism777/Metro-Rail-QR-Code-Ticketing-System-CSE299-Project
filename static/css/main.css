@@ -22,7 +22,7 @@
         }
         .mynavbar a {
             padding: 0.3em 0;
-            color: rgba(0, 0, 0, 0.5);
+            color: rgba(255, 255, 255, 0.5);
             position: relative;
             display: inline-block;
             letter-spacing: 1px;
@@ -41,7 +41,7 @@
             height: 5px;
             width: 100%;
             content: "";
-            background-color: rgb(109, 16, 16);
+            background-color: rgba(209, 185, 50, 0.89);
         }
         .mynavbar a:after {
             padding: 0.3em 0;
@@ -49,7 +49,7 @@
             bottom: 100%;
             left: 0;
             content: attr(data-hover);
-            color: rgb(0, 94, 8);
+            color: rgba(209, 185, 50, 0.89);
             white-space: nowrap;
         }
         .mynavbar li:hover a,
@@ -57,5 +57,7 @@
             transform: translateY(100%);
         }
 
-
-        
+        body{
+            background-image:url(https://i.pinimg.com/474x/c8/63/c6/c863c62bcdaa5bc68e4b462a2b1b1709.jpg)!important;
+    
+        }

@@ -1,11 +1,13 @@
 {% load static %}
+{% url 'home' as home %}
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="shortcut icon" href="{% static 'images/bymetrorail.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/registration.css'%}">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
@@ -60,9 +62,13 @@
           </div>
         </div>
         <div class="button">
-          <input type="submit" value="Register">
+          <input type="submit" value="Register"><br>
+         
         </div>
+        <div class="button">
+          <input type="submit" value="Go Back" onclick="window.location.href='{% url 'home' %}'"></button>
       </form>
+      
     </div>
   </div>
 

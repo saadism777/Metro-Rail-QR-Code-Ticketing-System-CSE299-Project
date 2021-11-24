@@ -5,33 +5,55 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
- 
-    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+    <link rel="shortcut icon" href="{% static 'images/bymetrorail.ico' %}" />
+    <title>Log In</title>
+    <link rel="stylesheet" href="{% static 'css/login2.css'%}">
+    <style>
+    #brand{
+        width:250px;
+        display:block;
+        margin-top:25px;
+        padding-top: 50px;
+    }
+    </style>
   </head>
   <body>
-    <div class="wrapper">
-      <div class="title">Login Form</div>
-      <form action="#">
-        <div class="field">
-          <input type="text" required>
-          <label>Email Address</label>
+    <div class='container'>
+    <div class='main'>
+
+        <div class='sign_up'>
+
+
+            <img id="brand" src="{% static 'images/bylogometro.png' %}" alt="logo"></a>
+                <h1 class='w_title'>Don't have an account?</h1>
+                <p class='text'>Get the best Metro Rail Experience <br /> Sign up now and buy digital tickets on contactless payment, Quick and easy!</p>
+                <a href='{% url 'reg' %}' class='w_button'>Sign Up now</a>
+            </div>
         </div>
-        <div class="field">
-          <input type="password" required>
-          <label>Password</label>
+
+        <div class='sign_in'>
+
+            
         </div>
-        <div class="content">
-          <div class="checkbox">
-            <input type="checkbox" id="remember-me">
-            <label for="remember-me">Remember me</label>
-          </div>
-          <div class="pass-link"><a href="#">Forgot password?</a></div>
+
+        <div class='s_i_modal'>
+
+            <div class='y_s_i_content'>
+                <h1 class='y_title'>Sign In Here!</h1>
+                <form>
+                    <input class='login_field' name='login' placeholder='username' />
+                    <input class='login_field' type='password' name='pass' placeholder='password' />
+                </form>
+                <a href='#' class='y_button'>Log In</a>
+                <a href='{% url 'home' %}'>Go Back</a>
+                <p class='lil_text'> Use your email/username to login to buy tickets and more!</p>
+            </div>
         </div>
-        <div class="field">
-          <input type="submit" value="Login">
-        </div>
-        <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
-      </form>
     </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+
   </body>
 </html>

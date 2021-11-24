@@ -1,47 +1,62 @@
-
 <!DOCTYPE html>
 {% load static %}
+{% url 'home' as home %}
+{% url 'contact' as contact %}
 <html>
 <head>
     <meta charset='utf-8'>
     <!-- <meta http-equiv='X-UA-Compatible' content='IE=edge'> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-    {% comment %} <link rel="shortcut icon" href="{% static 'images/metrorail.ico' %}" /> {% endcomment %}
+    <link rel="shortcut icon" href="{% static 'images/bymetrorail.ico' %}" />
     <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/footer.css' %}">
     <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
     .navbar {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: justify;
-    justify-content: center;
-    padding: 0.5rem 1rem;
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-pack: justify;
+      justify-content: center;
+      padding: 0.5rem 1rem;
     }
+    .navbar-brand img{
+        width: 150px;
+        display:inline-block;
+      }
+    .navbar{
+        box-shadow: 0px 2px 5px #777;
+      }
+    
     </style>
 </head>
 
-</body>
-
-    <nav class="navbar navbar-dark bg-light">
+</body id = "boddy">
+<div class="sticky-top">
+    <nav class="navbar navbar-light bg-dark">
     
-    <ul class="mynavbar">
-    {% comment %} <li> <a class="navbar-brand" href="#"> <img id="brand" src="{% static 'images/metrorail.png' %}" alt="logo"></a> </li> {% endcomment %}
-    <li class="current"><a href="#" data-hover="Home">Home</a></li>
-    <li><a href="#" data-hover="Buy Ticket">Buy Ticket</a></li>
-    <li><a href="#" data-hover="Schedule">Schedule</a></li>
-    <li><a href="#" data-hover="FAQ">FAQ</a></li>
-    <li><a href="#" data-hover="About Us">About Us</a></li>
-    <li><a href="{% url 'log' %}" data-hover="Login">Login</a></li>
-    <li><a href="{% url 'reg' %}" data-hover="Register">Register</a></li>
+    <a class="navbar-brand" href="{% url 'home' %}"><img id="brand" src="{% static 'images/bylogometro.png' %}" alt="logo"></a>
+      <ul class="mynavbar">
+    
+        <li class="nav-item {% if request.path == home %} current {% endif %}"><a class="navlink" href="{% url 'home' %}" data-hover="Home">Home</a></li>
+        <li class="nav-item"><a class="navlink" href="#" data-hover="Buy Ticket">Buy Ticket</a></li>
+        <li class="nav-item"><a class="navlink" href="#" data-hover="Schedule">Schedule</a></li>
+        <li class="nav-item"><a class="navlink" href="#" data-hover="FAQ">FAQ</a></li>
+        <li class="nav-item {% if request.path == contact %} current {% endif %}"><a class="navlink" href="{% url 'contact' %}" data-hover="Contact Us">Contact Us</a></li>
+        <li class="nav-item"><a class="navlink" href="{% url 'log' %}" data-hover="Login">Login</a></li>
+        <li class="nav-item"><a class="navlink" href="{% url 'reg' %}" data-hover="Register">Register</a></li>
 
-</ul>
+      </ul>
+      </div>
 </nav>
+</div>
+
+{% comment %} {% if request.user.is_authenticated%} {% endcomment %}
+
 {% block content %}
 
 {% endblock content %}
@@ -53,7 +68,8 @@
 <footer class="site-footer">
       <div class="container">
         <div class="row">
-          <div class="col-sm-12 col-md-6"><h6 style="color:green;">About</h6>
+
+          <div class="col-sm-12 col-md-6"><h6 style="color:white;">About</h6>
                 <p class="text-justify">
                     The Metro Rail Management System is a web-based application that will ensure all information
                     about the metro rail and routes for the public. The system facilitates the passengers to enquire
@@ -62,17 +78,10 @@
                 </p>
            </div>
 
-          <div class="col-xs-6 col-md-3">
-                <h6 style="color:green;">Quick Links</h6>
-                <ul class="footer-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">About Us</a></li>
-            </ul>
-          </div>
+          
 
           <div class="col-xs-6 col-md-3">
-            <h6 style="color:green;">Our Team Members</h6>
+            <h6 style="color:white;">Our Team Members</h6>
             <ul class="footer-links">
               <li>Farhan Hasin Saad</li>
               <li>Anjoom Nur</li>
@@ -80,6 +89,17 @@
               <li>Monalisa Rashid</li>
             </ul>
           </div>
+
+          
+        <div class="col-xs-6 col-md-3">
+                <h6 style="color:white;">Quick Links</h6>
+                <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+          </div>
+          
         </div>
         <hr>
       </div>

@@ -8,6 +8,8 @@ def reg(request):
 def log(request):
     return render(request, 'railapp/login.html')
 def Contact(request):
-    return render(request, 'railapp/login.html')
+    return render(request, 'railapp/contact.html')
 def checkout(request):
     return render(request, 'railapp/checkout.html')
+def Confirmation(request):
+    return render(request, 'railapp/confirmation.html')

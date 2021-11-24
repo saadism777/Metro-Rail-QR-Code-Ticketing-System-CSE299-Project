@@ -1,20 +1,20 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap');
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
   
   body {
-    font-family: "Montserrat-Regular";
-    color: rgb(189, 204, 58);
+    font-family: "Outfit";
+    color: rgba(209, 185, 50, 0.89);
     font-size: 15px;
   
   }
   
   input, textarea, select, button {
-    font-family: "Montserrat-Regular";
-    color: rgb(238, 221, 221);
-    font-size: 15px; 
+    font-family: "Outfits";
+    color: rgba(255, 255, 255, 0.89);
+    font-size: 15px;
   }
   
   
@@ -32,8 +32,8 @@
   .inner {
     max-width: 758px;
     margin: auto;
-    background: #744040;
-    border: 10px solid #0d99d7;
+    background: #343b43;
+    border-radius: 80px;
     padding: 77px 99px 87px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
@@ -41,33 +41,24 @@
     -ms-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     -o-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
    }
-  
-  
-  h3 {
-    text-transform: uppercase;
-    font-size: 45px;
-    font-family: "Montserrat-Bold";
-    text-align: center;
-    margin-bottom: 12px; }
-  
-  p {
-    text-align: center;
-    padding: 0 10px;
-    margin-bottom: 55px;
-    line-height: 1.8; 
-}
-  
-  .form-group {
-    position: relative;
+  .form-group span.border {
+    height: 2px;
     display: block;
-    margin-bottom: 48px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 41px;
+    transform: scaleX(0);
+    transition: all .15s ease;
+    background: rgb(122, 87, 87); 
+  }
 
 }
 .form-group span {
       font-size: 15px;
-      color: #00ade6;
+      color: rgba(209, 185, 50, 0.89);
       position: absolute;
-      top: 11px;
+      top: 3px;
       transition: all .2s ease;
       transform-origin: 0 0;
       cursor: text;
@@ -86,8 +77,9 @@
      }
   
 .form-control {
+    color: #fff;
     border: none;
-    border-bottom: 2px solid #00ade6;
+    border-bottom: 2px solid rgba(209, 185, 50, 0.89);
     display: block;
     width: 100%;
     height: 43px;
@@ -96,7 +88,7 @@
     font-family: "Montserrat-SemiBold"; 
 }
 .form-control:focus, .form-control:valid {
-      border-bottom: 2px solid #fff; 
+      border-bottom: 2px solid rgba(209, 185, 50, 0.89);
     }
 .form-control:focus + span, .form-control:valid + span {
         transform: translateY(-22px) scale(0.8); 
@@ -113,7 +105,7 @@
     border: none;
     width: 162px;
     height: 51px;
-    border: 2px solid #fff;
+    border: 2px solid rgba(209, 185, 50, 0.89);
     margin: auto;
     margin-top: 60px;
     cursor: pointer;
@@ -122,7 +114,7 @@
     justify-content: center;
     padding: 0;
     background: none;
-    color: #fff;
+    color: white;
     text-transform: uppercase;
     font-family: "Montserrat-SemiBold";
     -webkit-transform: perspective(1px) translateZ(0);
@@ -156,7 +148,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: #2098D1;
+      background: rgba(209, 185, 50, 0.89);
       -webkit-transform: scaleX(0);
       transform: scaleX(0);
       -webkit-transform-origin: 0 50%;
@@ -199,8 +191,8 @@
       -o-box-shadow: none; }
   
     .wrapper {
-      background: #39459b;
-      border: 10px solid #0d99d7;
+      background: #ffffff;
+      border: 10px solid #4d4e4e;
      } 
     
     }

@@ -1,5 +1,6 @@
+{% extends 'railapp/main.html' %}
 {% block content %}
-
+{% load static %}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,7 +10,12 @@
 
 		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">	
 		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="contact.css">
+		<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+		<style>
+		.form-group{
+			display:block;
+		}
+		</style>
 	</head>
 
 	<body>
@@ -33,9 +39,10 @@
 						<span for="">Your Message</span>
 						<span class="border"></span>
 					</label>
-					<button>Submit 
+					<button oneclick="window.location.href='{% url 'confirmation' %}'">Submit
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
+					<button onclick="window.location.href='{% url 'home' %}'">Return</button>
 				</form>
 			</div>
 		</div>

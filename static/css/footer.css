@@ -2,11 +2,11 @@
 .site-footer
 {
   font-family: 'Outfit';
-  background-color:#ffffff;
+  background-color:#343b43;
   padding:45px 0 20px;
   font-size:15px;
   line-height:24px;
-  color:#737373;
+  color:rgba(209, 185, 50, 0.89);
   margin-top: 5%;
 }
 .site-footer hr
@@ -28,11 +28,11 @@
 }
 .site-footer a
 {
-  color:#737373;
+  color:rgba(209, 185, 50, 0.89);
 }
 .site-footer a:hover
 {
-  color:#3366cc;
+  color:rgba(209, 185, 50, 0.89);
   text-decoration:none;
 }
 .footer-links
