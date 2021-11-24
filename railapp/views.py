@@ -9,3 +9,5 @@ def log(request):
     return render(request, 'railapp/login.html')
 def Contact(request):
     return render(request, 'railapp/contact.html')
+def Confirmation(request):
+    return render(request, 'railapp/confirmation.html')

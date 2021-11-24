@@ -41,26 +41,16 @@
     -ms-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     -o-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
    }
-  
-  
-  h3 {
-    text-transform: uppercase;
-    font-size: 45px;
-    font-family: "Montserrat-Bold";
-    text-align: center;
-    margin-bottom: 12px; }
-  
-  p {
-    text-align: center;
-    padding: 0 10px;
-    margin-bottom: 55px;
-    line-height: 1.8; 
-}
-  
-  .form-group {
-    position: relative;
+  .form-group span.border {
+    height: 2px;
     display: block;
-    margin-bottom: 48px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 41px;
+    transform: scaleX(0);
+    transition: all .15s ease;
+    background: rgb(122, 87, 87); }
 
 }
 .form-group span {
