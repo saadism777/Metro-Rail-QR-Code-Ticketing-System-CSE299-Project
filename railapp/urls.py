@@ -6,4 +6,5 @@ urlpatterns = [
     path('reg/', views.reg, name="reg"),
     path('log/', views.log, name="log"),
     path('contact/', views.Contact, name="contact"),
+    path('confirmation/', views.Confirmation, name="confirm")
 ]
