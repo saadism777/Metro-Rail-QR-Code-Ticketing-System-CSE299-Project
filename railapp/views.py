@@ -9,3 +9,5 @@ def log(request):
     return render(request, 'railapp/login.html')
 def Contact(request):
     return render(request, 'railapp/login.html')
+def checkout(request):
+    return render(request, 'railapp/checkout.html')
