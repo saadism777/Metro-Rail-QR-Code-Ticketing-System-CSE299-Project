@@ -12,11 +12,12 @@ body{
   align-items: center;
   padding: 10px;
   background: rgb(255, 255, 255);
+  background-image:url(https://i.pinimg.com/474x/c8/63/c6/c863c62bcdaa5bc68e4b462a2b1b1709.jpg)!important;
 }
 .container{
   max-width: 700px;
   width: 100%;
-  background-color: #e4e671;
+  background-color: rgba(209, 185, 50, 0.89);
   padding: 25px 30px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
