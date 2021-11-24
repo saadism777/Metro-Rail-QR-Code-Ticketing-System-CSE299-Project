@@ -45,7 +45,7 @@
         <li class="nav-item {% if request.path == home %} current {% endif %}"><a class="navlink" href="{% url 'home' %}" data-hover="Home">Home</a></li>
         <li class="nav-item"><a class="navlink" href="#" data-hover="Buy Ticket">Buy Ticket</a></li>
         <li class="nav-item"><a class="navlink" href="#" data-hover="Schedule">Schedule</a></li>
-        <li class="nav-item"><a class="navlink" href="#" data-hover="FAQ">FAQ</a></li>
+        <li class="nav-item"><a class="navlink" href="{% url 'faq' %}" data-hover="FAQ">FAQ</a></li>
         <li class="nav-item {% if request.path == contact %} current {% endif %}"><a class="navlink" href="{% url 'contact' %}" data-hover="Contact Us">Contact Us</a></li>
         <li class="nav-item"><a class="navlink" href="{% url 'log' %}" data-hover="Login">Login</a></li>
         <li class="nav-item"><a class="navlink" href="{% url 'reg' %}" data-hover="Register">Register</a></li>

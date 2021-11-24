@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQs</title>
+    <link rel="stylesheet" href="{% static 'css/faq.css'%}" />
+  </head>
+  <body>
+    <div class="faqs-container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="questions-container">
+        <div class="content-container">
+          <div class="faq-header">
+            <h3>How do I purchase a Ticket?</h3>
+            <span class="open active">+</span>
+            <span class="close">-</span>
+          </div>
+
+          <div class="content">
+            <p>
+              Go to our Navbar and click on ticket. Select Date, Station ,Destination and click checkout. Complete payment and get your QR code.
+            </p>
+
+          </div>
+        </div>
+
+        <div class="content-container">
+          <div class="faq-header">
+            <h3>Can i purchase more than one ticket?</h3>
+            <span class="open active">+</span>
+            <span class="close">-</span>
+          </div>
+
+          <div class="content">
+            <p>
+              One user can buy one ticket at a time. You can buy as many times as you want.
+            </p>
+          </div>
+        </div>
+
+        <div class="content-container">
+          <div class="faq-header">
+            <h3>How to cancel Ticket?</h3>
+            <span class="open active">+</span>
+            <span class="close">-</span>
+          </div>
+
+          <div class="content">
+            <p>
+              You can contact admin to cancel your order.
+            </p>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/faq.js'%}"></script>
+  </body>
+</html>
