@@ -50,7 +50,8 @@
     top: 41px;
     transform: scaleX(0);
     transition: all .15s ease;
-    background: rgb(122, 87, 87); }
+    background: rgb(122, 87, 87); 
+  }
 
 }
 .form-group span {
