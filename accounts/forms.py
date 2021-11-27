@@ -23,8 +23,8 @@ class GeneralUserSignUpForm(UserCreationForm):
         user.is_guser = True
         user.save()
         guser = GeneralUser.objects.create(user=user)
-        customer.phone_number=self.cleaned_data.get('phone_number')
-        customer.location=self.cleaned_data.get('location')
+        guser.phone_number=self.cleaned_data.get('phone_number')
+        guser.location=self.cleaned_data.get('location')
         return user
 
 
@@ -48,7 +48,7 @@ class TrainMasterSignUpForm(UserCreationForm):
         user.save()
         trainmaster = TrainMaster.objects.create(user=user)
         trainmaster.phone=self.cleaned_data.get('phone')
-        teacher.licenseNumber=self.cleaned_data.get('licenseNumber')
-        teacher.save()
+        trainmaster.licenseNumber=self.cleaned_data.get('licenseNumber')
+        trainmaster.save()
 
-        return teacher
+        return trainmaster

@@ -1,0 +1,12 @@
+{% extends 'railapp/home.html' %}
+{% url 'home' as home %}
+{% load static %}
+{% block content %}
+<div class="container">
+<h1>SignUp from here</h1>
+
+<button type=""class="btn btn-danger"><a href="{%url 'trainmaster_signup'%}">Trainmaster SignUp</a></button>
+
+<button type="" class="btn btn-secondary"><a href="{%url 'guser_signup'%}">General User SignUp</a></button>
+</div>
+{%endblock%}

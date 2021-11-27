@@ -30,7 +30,7 @@ class GeneralUserSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('main')
+        return redirect('home')
 
 class TrainMasterSignUpView(CreateView):
     model = User
@@ -44,5 +44,5 @@ class TrainMasterSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         #login(self.request, user)
-        return redirect('main')
+        return redirect('home')
 
