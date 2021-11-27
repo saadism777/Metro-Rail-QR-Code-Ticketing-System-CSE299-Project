@@ -1,0 +1,26 @@
+a{
+    text-decoration: none;
+    color: aliceblue;
+}
+a:hover
+{   text-decoration: none;
+color: white;}
+.container{
+    width: 40rem;
+    background-color: #343b43;
+    padding: 4rem;
+    margin: auto;
+    display: block;
+    text-align: center;
+    border-radius: 5rem;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+}
+h1{
+    padding-bottom: 4rem;
+    color: aliceblue;
+}
+.btn{
+    border-radius: 3rem;
+}
+

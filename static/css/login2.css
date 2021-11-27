@@ -55,7 +55,8 @@ a {
     width: 900px;
     height: 500px;
     box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
-    background-color: #fff;
+    background-color: #343b43;
+    border-radius: 5rem;
 }
 
 .sign_up,
@@ -107,6 +108,7 @@ a {
     height: 560px;
     background-color: #f4bc00;
     transition: all 0.4s ease;
+    border-radius: 5rem;
 }
 
 .s_i_modal_anim {
@@ -174,7 +176,7 @@ a {
     line-height: 8em;
     color: #fff;
     font-weight: 500;
-    background-color: #000;
+    background-color: #343b43;
 }
 
 .y_button:hover {

@@ -10,16 +10,22 @@
   
   .faqs-container h2 {
     padding: 4px 32px;
-    font-size: 28px;
+    font-size: 2rem;
+    text-align: center;
+    background-color: rgba(209, 185, 50, 0.89);
+    border-radius: 10rem;
   }
   
   .faqs-container .faq-header {
     display: flex;
-    background: #03071e;
-    color:rgba(209, 185, 50, 0.89);
+    background: #343b43;
+    color: rgba(209, 185, 50, 0.89);
     align-items: center;
     position: relative;
     cursor: pointer;
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 3rem;
   }
   
   .faqs-container .faq-header .open,
@@ -56,4 +62,12 @@
   
   .faqs-container .content.active {
     max-height: 600px;
+    border-radius: 3rem;
   }
+  .faqs-container {
+    font-family: "Roboto", sans-serif;
+    max-width: 50rem;
+    margin: 0 auto;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}

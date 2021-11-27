@@ -25,9 +25,9 @@
 
 
             <img id="brand" src="{% static 'images/bylogometro.png' %}" alt="logo"></a>
-                <h1 class='w_title'>Don't have an account?</h1>
+                <h1 class='w_title' style="color:white;">Don't have an account?</h1>
                 <p class='text'>Get the best Metro Rail Experience <br /> Sign up now and buy digital tickets on contactless payment, Quick and easy!</p>
-                <a href='{% url 'reg' %}' class='w_button'>Sign Up now</a>
+                <a href='{% url 'signup' %}' class='w_button'>Sign Up now</a>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
                     <input class='login_field' type='password' name='pass' placeholder='password' />
                 </form>
                 <a href='#' class='y_button'>Log In</a>
-                <a href='{% url 'home' %}'>Go Back</a>
+                <a href='{% url 'home' %}' class='y_button'>Go Back</a>
                 <p class='lil_text'> Use your email/username to login to buy tickets and more!</p>
             </div>
         </div>

@@ -1,20 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
-}
-body{
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  background: rgb(255, 255, 255);
-  background-image:url(https://i.pinimg.com/474x/c8/63/c6/c863c62bcdaa5bc68e4b462a2b1b1709.jpg)!important;
-}
+
 .container{
+  margin-top: 3rem;
   max-width: 700px;
   width: 100%;
   background-color: rgba(209, 185, 50, 0.89);
@@ -117,6 +104,22 @@ form .input-box span.details{
    transition: all 0.3s ease;
    background: #000000;
  }
+ form input{
+  margin-left: 7rem;
+  border-radius: 3rem;
+  display: block;
+  overflow: visible;
+  width: 25rem;
+ }
+ form label{
+  margin-left: 7rem;
+ }
+form span.helptext{
+  margin-left: 7rem;
+ }
+ form ul{
+  margin-left: 6rem;
+ }
  form .button input:hover{
   /* transform: scale(0.99); */
   background: linear-gradient(-135deg, #e6aa71, #b66f59);
@@ -144,4 +147,15 @@ form .user-details .input-box{
   .container .content .category{
     flex-direction: column;
   }
+}
+form h2{
+  font-size: 2rem;
+  text-align: center;
+  padding: 1rem;
+}
+.y_button {
+  line-height: 8em;
+  color: #fff;
+  font-weight: 500;
+  background-color: #343b43;
 }

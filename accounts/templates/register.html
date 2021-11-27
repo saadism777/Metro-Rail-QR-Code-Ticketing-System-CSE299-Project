@@ -3,10 +3,16 @@
 {% load static %}
 {% block content %}
 <div class="container">
-<h1>SignUp from here</h1>
+<h1>Register from here</h1>
+<link rel="stylesheet" href="{% static 'css/register.css'%}">
 
-<button type=""class="btn btn-danger"><a href="{%url 'trainmaster_signup'%}">Trainmaster SignUp</a></button>
-
-<button type="" class="btn btn-secondary"><a href="{%url 'guser_signup'%}">General User SignUp</a></button>
+<div class='sign_up'>
+<div class="trainmaster">
+<button type=""class="btn btn-danger"><a style="text-decoration: none" href="{%url 'trainmaster_signup'%}">Trainmaster Registration</a></button>
+</div> <br>
+<div class="guser">
+<button type="" class="btn btn-secondary"><a style="text-decoration: none" href="{%url 'guser_signup'%}">General User Registration</a></button>
+</div>
+</div>
 </div>
 {%endblock%}
