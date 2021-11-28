@@ -34,16 +34,17 @@
 			<label id="label-login" for="log-login-show">Log In From Here</label>
 			<input type="radio" name="active-log-panel" id="log-login-show">
 		</div>
-							
+		<form method="POST" action="">	
+		{% csrf_token %}				
 		<div class="white-panel">
 			<div class="login-show">
 			    <div class="headline">
 				<i class="fas fa-user fa-2x" style="margin-right:3px;"></i>
 				<h2>General User : Log In</h2>
 				</div>
-				<input type="text" placeholder="Username">
-				<input type="password" placeholder="Password">
-				<input class="buttonlog" type="button" value="Login">
+				<input type="text" name="guser_name" placeholder="Username">
+				<input type="password" name="guser_password" placeholder="Password">
+				<input class="buttonlog" type="submit" value="Login">
 				<a href="">Forgot password?</a>
                 <div class="extra">
                 <a href="{% url 'home' %}" style="width:7rem;" class='btn'>Go Back</a>
@@ -65,6 +66,7 @@
                 </div>
 			</div>
 		</div>
+		</form>
 	</div>
     </body>
     <script src="{% static 'js/login.js'%}"></script>

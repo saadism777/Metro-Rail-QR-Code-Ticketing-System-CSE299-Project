@@ -48,9 +48,17 @@
         <li class="nav-item"><a class="navlink" href="#" data-hover="Schedule">Schedule</a></li>
         <li class="nav-item {% if request.path == faq %} current {% endif %}"><a class="navlink" href="{% url 'faq' %}" data-hover="FAQ">FAQ</a></li>
         <li class="nav-item {% if request.path == contact %} current {% endif %}"><a class="navlink" href="{% url 'contact' %}" data-hover="Contact Us">Contact Us</a></li>
+        
+        {% if request.user.is_authenticated %}
+        <li class="nav-item"><a class="navlink" href="{% url 'log_out' %}" data-hover="Log Out">Log Out</a></li>
+        </ul>
+      </div>
+      <h2> Welcome {{ user.username }} </h2>
+        {% else %}
+
         <li class="nav-item"><a class="navlink" href="{% url 'log' %}" data-hover="Login">Login</a></li>
         <li class="nav-item {% if request.path == signup %} current {% endif %}"><a class="navlink" href="{% url 'signup' %}" data-hover="Register">Register</a></li>
-
+        {% endif %} 
       </ul>
       </div>
 </nav>
