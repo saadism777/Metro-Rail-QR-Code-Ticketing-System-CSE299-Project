@@ -11,6 +11,9 @@
   padding-left: 10rem;
   padding-right: 10rem;
 }
+.footer-row{
+  display: inline-flex;
+}
 .site-footer hr
 {
   border-top-color:#bbb;

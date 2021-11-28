@@ -6,7 +6,7 @@
 <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/registration.css' %}">
 <div class="container">
 <form  method="POST" accept-charset="utf-8">
-
+<title>Register</title>
 {% csrf_token %}
 {% with name="guser" %}
 {% if user_type == name %}

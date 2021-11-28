@@ -3,8 +3,6 @@ from .models import *
 # Create your views here.
 def home(request):
     return render(request, 'railapp/home.html')
-def log(request):
-    return render(request, 'railapp/login.html')
 def Contact(request):
     return render(request, 'railapp/contact.html')
 def checkout(request):

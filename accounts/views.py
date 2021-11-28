@@ -16,6 +16,12 @@ def SignUp(request):
 
 
 
+def SignIn(request):
+	return render(request,'signin.html')
+
+def log(request):
+    return render(request, 'login.html')
+
 
 
 class GeneralUserSignUpView(CreateView):

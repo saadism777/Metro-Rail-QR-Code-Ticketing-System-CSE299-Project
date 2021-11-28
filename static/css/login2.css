@@ -28,7 +28,7 @@ a,
 
 h1 {
     font-size: 2em;
-    color: #000;
+    color: rgb(0, 0, 0);
 }
 
 p {
@@ -154,7 +154,7 @@ a {
 .y_button {
     margin-left: 70px;
     padding: 10px 20px 11px 20px;
-    border-radius: 2px;
+    border-radius: 10px;
 }
 
 .w_button {
@@ -171,6 +171,9 @@ a {
 .w_button:active {
     background-color: #000;
 }
+.y_button:active {
+    background-color: #000;
+}
 
 .y_button {
     line-height: 8em;
@@ -180,7 +183,8 @@ a {
 }
 
 .y_button:hover {
-    cursor: default;
+    background-color: #f4bc00;
+    cursor: pointer;
 }
 
 .login_field {
@@ -189,10 +193,10 @@ a {
     line-height: 43px;
     font-family: "Open Sans", sans-serif;
     font-size: 1.4em;
-    color: #000;
     background-color: #f4bc00;
     border: 1px solid #f4bc00;
     border-bottom: 1px solid #dba800;
+    border-radius: 1rem;
 }
 
 ::-webkit-input-placeholder {
@@ -206,7 +210,7 @@ a {
 }
 
 @media(max-width:998px){
-    html{
+    /* html{
         font-size: 55%;
     }
     .container {
@@ -224,5 +228,5 @@ a {
     }
     .s_i_modal {
         position: sticky;
-    }
+    } */
 }

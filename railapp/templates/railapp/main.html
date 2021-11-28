@@ -2,10 +2,11 @@
 {% load static %}
 {% url 'home' as home %}
 {% url 'contact' as contact %}
+{% url 'faq' as faq %}
+{% url 'signup' as signup %}
 <html>
 <head>
     <meta charset='utf-8'>
-    <!-- <meta http-equiv='X-UA-Compatible' content='IE=edge'> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
     <link rel="shortcut icon" href="{% static 'images/bymetrorail.ico' %}" />
     <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/footer.css' %}">
@@ -45,10 +46,10 @@
         <li class="nav-item {% if request.path == home %} current {% endif %}"><a class="navlink" href="{% url 'home' %}" data-hover="Home">Home</a></li>
         <li class="nav-item"><a class="navlink" href="#" data-hover="Buy Ticket">Buy Ticket</a></li>
         <li class="nav-item"><a class="navlink" href="#" data-hover="Schedule">Schedule</a></li>
-        <li class="nav-item"><a class="navlink" href="{% url 'faq' %}" data-hover="FAQ">FAQ</a></li>
+        <li class="nav-item {% if request.path == faq %} current {% endif %}"><a class="navlink" href="{% url 'faq' %}" data-hover="FAQ">FAQ</a></li>
         <li class="nav-item {% if request.path == contact %} current {% endif %}"><a class="navlink" href="{% url 'contact' %}" data-hover="Contact Us">Contact Us</a></li>
         <li class="nav-item"><a class="navlink" href="{% url 'log' %}" data-hover="Login">Login</a></li>
-        <li class="nav-item"><a class="navlink" href="{% url 'signup' %}" data-hover="Register">Register</a></li>
+        <li class="nav-item {% if request.path == signup %} current {% endif %}"><a class="navlink" href="{% url 'signup' %}" data-hover="Register">Register</a></li>
 
       </ul>
       </div>
@@ -67,7 +68,7 @@
 <footer>
 <footer class="site-footer">
       <div class="footer-container">
-        <div class="row">
+        <div class="footer-row">
 
           <div class="col-sm-12 col-md-6"><h6 style="color:white;">About</h6>
                 <p class="text-justify">

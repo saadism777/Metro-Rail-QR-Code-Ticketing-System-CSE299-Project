@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="{% static 'images/bymetrorail.ico' %}" />
+    <title>Log In</title>
+    <link rel="stylesheet" href="{% static 'css/login2.css'%}">
+    <style>
+    #brand{
+        width:250px;
+        display:block;
+        margin-top:25px;
+        padding-top: 50px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class='container'>
+    <div class='main'>
+
+        <div class='sign_up'>
+            <div class='w_s_u_content'>
+
+            <img id="brand" src="{% static 'images/bylogometro.png' %}" alt="logo"></a>
+                <h1 class='w_title' style="color:white;">Are you a Train Master?</h1>
+                <p style="margin-left:4rem;"> If you are a staff member <br> and want to access administrative panel, functionalities </p>
+                <a href="#" class='w_button'>Log In From Here</a>
+            </div>
+        </div>
+
+        <div class='sign_up'>
+            <div class='w_s_i_content'>
+            <img id="brand" src="{% static 'images/bylogometro.png' %}" alt="logo"></a>
+                <h1 class='w_title' style="color:white;">Are you a General User?</h1>
+                <p class='text'>login now to buy Digital Tickets and Check train schedule</p>
+                <a href='#' class='w_button'>Log In From Here</a>
+            </div>
+            
+        </div>
+
+        <div class='s_i_modal'>
+
+            <div class='y_s_i_content'>
+                <h1 class='y_title'>General User : Log In Here!</h1>
+                <form>
+                    <input class='login_field' name='guserlogin' placeholder='username' />
+                    <input class='login_field' type='password' name='guserpass' placeholder='password' />
+                </form>
+                <a href='#' class='y_button'>Log In</a>
+                
+                <p class='text' style="color:black;">Get the best Metro Rail Experience <br /> 
+                Sign up now and buy digital tickets on contactless payment, Quick and easy!</p>
+                <a href="{% url 'signup' %}" class='y_button'>Sign Up now</a>
+                <a href="{% url 'home' %}" class='y_button'>Go Back</a>
+            </div>
+
+            <div class='y_s_u_content'>
+                <h1 class='y_title'>Train Master : Log In Here</h1>
+                <form action="#">
+                    <input class='login_field' name='trainmasterlogin' placeholder='your name' />
+                    <input class='login_field' type='password' name='trainmasterpass' placeholder='password' />
+                </form>
+                <a href='#' class='y_button'>Log In</a>
+                <p class='text' style="color:black;">Login here to access all the administrative actions <br />
+                If you are not signed up then</p>
+                <a href="{% url 'signup' %}" class='y_button'>Sign Up now</a>
+                <a href="{% url 'home' %}" class='y_button'>Go Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  </body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        $('.w_button').on('click', function() {
+
+            $('.s_i_modal').toggleClass('s_i_modal_anim');
+            $('.y_s_i_content').toggleClass('y_s_i_content_anim');
+            $('.w_s_i_content').toggleClass('w_s_i_content_anim');
+            $('.w_s_u_content').toggleClass('w_s_u_content_anim');
+            $('.y_s_u_content').toggleClass('y_s_u_content_anim');
+            return false;
+
+        });
+
+    });
+
+</script>
+</html>
