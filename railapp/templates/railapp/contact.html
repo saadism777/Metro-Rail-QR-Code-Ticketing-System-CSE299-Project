@@ -21,28 +21,29 @@
 	<body>
 		<div class="wrapper">
 			<div class="inner">
-				<form action="#" method="">
+				<form class="was_validated" method="post">
+					{% csrf_token %}
 					<h3>Contact Us</h3>
 					<p>If you have any query about us please conatct us </p>
 					<label class="form-group">
-						<input type="text" class="form-control"  required>
+						<input name='name' type="text" class="form-control"  required>
 						<span>Your Name</span>
 						<span class="border"></span>
 					</label>
 					<label class="form-group">
-						<input type="text" class="form-control"  required>
+						<input name='email' type="text" class="form-control"  required>
 						<span for="">Your Mail</span>
 						<span class="border"></span>
 					</label>
 					<label class="form-group" >
-						<textarea name="" id="" class="form-control" required></textarea>
+						<textarea name='subject' id="" class="form-control" required></textarea>
 						<span for="">Your Message</span>
 						<span class="border"></span>
 					</label>
-					<button oneclick="window.location.href='{% url 'confirmation' %}'">Submit
+					<button onclick="window.location.href='{% url 'confirmation' %}'">Send
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
-					<button onclick="window.location.href='{% url 'home' %}'">Return</button>
+					
 				</form>
 			</div>
 		</div>
