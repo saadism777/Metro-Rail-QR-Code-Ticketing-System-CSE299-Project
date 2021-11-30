@@ -25,6 +25,7 @@ class GeneralUserSignUpForm(UserCreationForm):
         guser = GeneralUser.objects.create(user=user)
         guser.phone_number=self.cleaned_data.get('phone_number')
         guser.location=self.cleaned_data.get('location')
+        guser.save()
         return user
 
 
