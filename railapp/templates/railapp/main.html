@@ -53,7 +53,13 @@
         <li class="nav-item"><a class="navlink" href="{% url 'log_out' %}" data-hover="Log Out">Log Out</a></li>
         </ul>
       </div>
-      <h2> Welcome {{ user.username }} </h2>
+          {% if user.is_guser == True %}
+          <h1>General User Portal</h1>  
+          {% else %}
+          <h1>Train Master Portal</h1> 
+          {% endif %} 
+
+      <h2> Welcome {{ user.username }}</h2>
         {% else %}
 
         <li class="nav-item"><a class="navlink" href="{% url 'log' %}" data-hover="Login">Login</a></li>

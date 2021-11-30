@@ -21,11 +21,12 @@ a{
     margin:auto;
     height:400px;
     background-color: #343b43;
+    box-shadow: 0 0 15px 9px #00000096;
     border-radius: 3rem;
 }
 .white-panel{
     background-color: rgba(209, 185, 50, 0.89);
-    height:500px;
+    height:150%;
     position:absolute;
     top:-50px;
     width:50%;
@@ -189,4 +190,7 @@ label:active {
 }
 .headline{
     display: inline-flex;
+}
+.btn:not(:disabled):not(.disabled){
+    float: right;
 }

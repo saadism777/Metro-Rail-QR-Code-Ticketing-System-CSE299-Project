@@ -7,6 +7,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="{% static 'css/login.css'%}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 #brand{
         width:250px;
@@ -34,7 +35,7 @@
 			<label id="label-login" for="log-login-show">Log In From Here</label>
 			<input type="radio" name="active-log-panel" id="log-login-show">
 		</div>
-		<form method="POST" action="">	
+		<form method="POST" action="{% url 'log' %}">	
 		{% csrf_token %}				
 		<div class="white-panel">
 			<div class="login-show">
@@ -44,25 +45,38 @@
 				</div>
 				<input type="text" name="guser_name" placeholder="Username">
 				<input type="password" name="guser_password" placeholder="Password">
-				<input class="buttonlog" type="submit" value="Login">
-				<a href="">Forgot password?</a>
+				{% for message in messages %}
+                <p style="color:red;text-align:center;" id="messages">{{message}}</p>
+                {% endfor %}
+				<input class="btn" type="submit" value="Login">
+				<a href="">Forgot password?</a><br>
+				<p>Not registered yet? </p>
                 <div class="extra">
                 <a href="{% url 'home' %}" style="width:7rem;" class='btn'>Go Back</a>
                 <a href="{% url 'signup' %}" style="width:10rem;" class='btn'>Register Here</a>
+				
                 </div>
 			</div>
+		</form>
+		<form method="POST" action="{% url 'log2' %}">
+			{% csrf_token %}
 			<div class="register-show">
 				<div class="headline">
 				<i class="fas fa-users-cog fa-2x" style="margin-right:3px;"></i>
 				<h2>Train Master : Log In</h2>
 				</div>
-				<input type="text" placeholder="Username">
-				<input type="password" placeholder="Password">
-				<input type="button" value="Login">
+				<input type="text" name="trainmaster_name" placeholder="Username">
+				<input type="password" name="trainmaster_password" placeholder="Password">
+				{% for message in messages %}
+                <p style="color:red;text-align:center;" id="messages">{{message}}</p>
+                {% endfor %}
+				<input class="btn" type="submit" value="Login">
                 <a href="">Forgot password?</a><br>
+				<p>Not registered yet? </p>
                 <div class="extra">
                 <a href="{% url 'home' %}" style="width:7rem;" class='btn'>Go Back</a>
                 <a href="{% url 'signup' %}" style="width:10rem;" class='btn'>Register Here</a>
+				
                 </div>
 			</div>
 		</div>

@@ -1,6 +1,4 @@
-from django.shortcuts import render
 
-# Create your views here.
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
@@ -32,11 +30,42 @@ def log(request):
              
               user= authenticate(request, username=username, password=password)
 
-              if user is not None:
+              if user is not None and user.is_guser:
                   login(request, user)
                   return redirect('home')
+              elif user is not None and user.is_trainmaster:
+                  messages.info(request, 'This  is for general users only, You are a Train Master')
               else:
-                  messages.info(request, 'Username or Password is incorrect')
+                 messages.info(request, 'Username or Password is incorrect')
+            
+
+    context= {}
+    return render(request, 'login.html', context)
+
+def log2(request):
+    """
+    This method is used to view the login page.
+    :param request: it's a HttpResponse from user.
+    :type request: HttpResponse.
+    :return: this method returns a search page which is a HTML page.
+    :rtype: HttpResponse.
+    """
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+          if request.method == 'POST':
+              username =request.POST.get('trainmaster_name')
+              password =request.POST.get('trainmaster_password')
+             
+              user= authenticate(request, username=username, password=password)
+
+              if user is not None and user.is_trainmaster:
+                  login(request, user)
+                  return redirect('home')
+              elif user is not None and user.is_guser:
+                  messages.info(request, 'This  is for Train Masters only, You are a General User')
+              else:
+                 messages.info(request, 'Username or Password is incorrect')
             
 
     context= {}
