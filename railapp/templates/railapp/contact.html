@@ -1,6 +1,6 @@
 {% extends 'railapp/main.html' %}
-{% block content %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -19,11 +19,21 @@
 	</head>
 
 	<body>
+		{% if name %}
+			<center>
+
+				<h2>Thanks {{ name }} !</h2>
+				<p>We recieved your email and will respond shortly..</p>
+				<br/> <br/>
+				<br/>
+			</center>
+		
+		{% else %}
 		<div class="wrapper">
 			<div class="inner">
-				<form class="was_validated" method="post">
+				<form class="{% url 'contact' %}" method="post">
 					{% csrf_token %}
-					<h3>Contact Us</h3>
+					<h3>Contact Us {{name}}</h3>
 					<p>If you have any query about us please conatct us </p>
 					<label class="form-group">
 						<input name='name' type="text" class="form-control"  required>
@@ -40,15 +50,14 @@
 						<span for="">Your Message</span>
 						<span class="border"></span>
 					</label>
-					<button onclick="window.location.href='{% url 'confirmation' %}'">Send
-						<i class="zmdi zmdi-arrow-right"></i>
-					</button>
+					<button type="submit" class="btn
+					dento-btn">Send Message</button>
+
 					
 				</form>
 			</div>
 		</div>
-		
+		{% endif %}
 	</body>
 </html>
-
 {% endblock content %}
