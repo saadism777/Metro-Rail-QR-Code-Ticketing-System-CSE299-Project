@@ -1,13 +1,21 @@
 
 from django.shortcuts import render,redirect
+from decimal import Decimal
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 from django.contrib import messages
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.decorators import login_required
 
 from django.views.generic import CreateView
 
 from .forms import GeneralUserSignUpForm,TrainMasterSignUpForm
-from .models import User,GeneralUser
+from .models import User,GeneralUser,Book,Route
+
+
+
+
 
 def SignUp(request):
 	return render(request,'register.html')
@@ -109,4 +117,30 @@ class TrainMasterSignUpView(CreateView):
         user = form.save()
         #login(self.request, user)
         return redirect('home')
+
+
+@login_required(login_url='log')
+def search(request):
+    context = {}
+    if request.method == 'POST':
+            source_r = request.POST.get('source')
+            dest_r = request.POST.get('destination')
+            date_r = request.POST.get('date')
+            route_list = Route.objects.filter(source=source_r, dest=dest_r, date=date_r)
+            if route_list:
+                return render(request, 'list.html', locals())
+            else:
+                context["error"] = "Sorry no routes availiable"
+                return render(request, 'search.html', context)
+    else:
+            return render(request, 'search.html')
+
+
+
+
+
+
+
+
+
 

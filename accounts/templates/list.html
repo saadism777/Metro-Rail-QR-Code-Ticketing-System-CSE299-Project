@@ -1,0 +1,59 @@
+
+{% extends 'railapp/main.html' %}
+{% block content %}
+<h3>{{msg}}</h3>
+<h2>Route Availability</h2>
+<table class="table table-striped" >
+    <thead style="background-color: rgb(80, 82, 81);color: rgb(255, 255, 255);">
+    <td>ID</td>
+    <td>SOURCE</td>
+    <td>DESTINATION</td>
+    <td>NUM OF SEATS</td>
+    <td>NUM OF SEATS REM</td>
+    <td>PRICE</td>
+    <td>DATE</td>
+    <td>TIME</td>
+
+    </thead>
+
+    {% for row in route_list %}
+    <tr>
+        <td>{{row.id}}</td>
+        <td>{{row.source}}</td>
+        <td>{{row.dest}}</td>
+        <td>{{row.nos}}</td>
+        <td>{{row.rem}}</td>
+        <td>{{row.price}}</td>
+        <td>{{row.date}}</td>
+        <td>{{row.time}}</td>
+
+
+    </tr>
+    {% endfor %}
+</table>
+<form action="{% url 'checkout' %}" method="post">
+    {% csrf_token %}
+    <div class="col-auto">
+        <label for="example-email-input" class="col-2 col-form-label">Route ID</label>
+        <div class="col-5">
+            <input name='route_id' class="form-control" type="number" id="example-email-input">
+        </div>
+    </div>
+    <div class="col=auto">
+        <label for="example-email-input" class="col-2 col-form-label">Number of seats</label>
+        <div class="col-5">
+            <input name='no_seats' class="form-control" type="number">
+        </div>
+    
+    <br>
+    <br>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-success float-left">Checkout</button>
+    </div>
+
+
+    {{error}}
+
+</form>
+
+{% endblock %}
