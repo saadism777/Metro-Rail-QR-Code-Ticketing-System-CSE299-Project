@@ -34,6 +34,7 @@ class TrainMasterSignUpForm(UserCreationForm):
     last_name = forms.CharField(required=True)
     email=forms.EmailField(required=True)
     phone=forms.CharField(required=True)
+    location = forms.CharField(required=True)
     licenseNumber=forms.CharField(required=True)
   
     class Meta(UserCreationForm.Meta):
@@ -49,7 +50,9 @@ class TrainMasterSignUpForm(UserCreationForm):
         user.save()
         trainmaster = TrainMaster.objects.create(user=user)
         trainmaster.phone=self.cleaned_data.get('phone')
+        trainmaster.location=self.cleaned_data.get('location')
         trainmaster.licenseNumber=self.cleaned_data.get('licenseNumber')
+        
         trainmaster.save()
 
         return trainmaster
