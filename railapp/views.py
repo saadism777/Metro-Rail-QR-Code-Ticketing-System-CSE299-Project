@@ -34,3 +34,5 @@ def Confirmation(request):
     return render(request, 'railapp/confirmation.html')
 def faq(request):
     return render(request, 'railapp/faq.html')
+def userprofile(request):
+    return render(request, 'railapp/userprofile.html')

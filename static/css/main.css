@@ -58,7 +58,9 @@
         }
 
         body{
-            background-image:url(https://i.pinimg.com/474x/c8/63/c6/c863c62bcdaa5bc68e4b462a2b1b1709.jpg)!important;
-    
+            background-image:url(https://images.unsplash.com/photo-1556695736-d287caebc48e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWV0cm98ZW58MHx8MHx8&w=1000&q=80)!important;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
         }
        
