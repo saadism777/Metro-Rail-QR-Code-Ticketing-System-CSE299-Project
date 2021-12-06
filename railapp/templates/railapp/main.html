@@ -6,6 +6,8 @@
 {% url 'signup' as signup %}
 {% url 'search' as search %}
 {% url 'checkout' as checkout %}
+{% url 'userprofile' as userprofile %}
+{% url 'trainmasterprofile' as trainmasterprofile %}
 
 <html>
 <head>
@@ -47,31 +49,31 @@
       <ul class="mynavbar">
     
         <li class="nav-item {% if request.path == home %} current {% endif %}"><a class="navlink" href="{% url 'home' %}" data-hover="Home">Home</a></li>
-        <li class="nav-item"><a class="navlink" href="{% url 'search' %}" data-hover="Buy Ticket">Buy Ticket</a></li>
+        <li class="nav-item" id="hide1"><a class="navlink" href="{% url 'search' %}" data-hover="Buy Ticket">Buy Ticket</a></li>
         <li class="nav-item"><a class="navlink" href="#" data-hover="Schedule">Schedule</a></li>
-        <li class="nav-item {% if request.path == faq %} current {% endif %}"><a class="navlink" href="{% url 'faq' %}" data-hover="FAQ">FAQ</a></li>
-        <li class="nav-item {% if request.path == contact %} current {% endif %}"><a class="navlink" href="{% url 'contact' %}" data-hover="Contact Us">Contact Us</a></li>
+        <li class="nav-item {% if request.path == faq %} current {% endif %}"id="hide2"><a class="navlink" href="{% url 'faq' %}" data-hover="FAQ">FAQ</a></li>
+        <li class="nav-item {% if request.path == contact %} current {% endif %}"id="hide3"><a class="navlink" href="{% url 'contact' %}" data-hover="Contact Us">Contact Us</a></li>
         
-        {% if request.user.is_authenticated %}
-        <li class="nav-item"><a class="navlink" href="{% url 'userprofile' %}" data-hover="Profile">Profile</a></li>
+        {% if request.user.is_authenticated and user.is_guser == True %}
+        <li class="nav-item {% if request.path == userprofile %} current {% endif %}"><a class="navlink" href="{% url 'userprofile' %}" data-hover="Profile">Profile</a></li>
         <li class="nav-item"><a class="navlink" href="{% url 'log_out' %}" data-hover="Log Out">Log Out</a></li>
         
         </ul>
-      </div>
-          {% if user.is_guser == True %}
-          <h1>General User Portal</h1>  
-          {% else %}
-          <h1>Train Master Portal</h1> 
-          {% endif %} 
-
-      <h2> Welcome {{ user.username }}</h2>
+        {% elif request.user.is_authenticated and user.is_trainmaster == True %}
+        <li class="nav-item"><a class="navlink" href="#" data-hover="Seats">Seats</a></li>
+        <li class="nav-item {% if request.path == trainmasterprofile %} current {% endif %}"><a class="navlink" href="{% url 'trainmasterprofile' %}" data-hover="Profile">Profile</a></li>
+        <li class="nav-item"><a class="navlink" href="{% url 'log_out' %}" data-hover="Log Out">Log Out</a></li>
+        <script type="text/javascript"> 
+          document.getElementById("hide1").style.display = "none";
+          document.getElementById("hide2").style.display = "none";
+          document.getElementById("hide3").style.display = "none";
+        </script>
         {% else %}
 
         <li class="nav-item"><a class="navlink" href="{% url 'log' %}" data-hover="Login">Login</a></li>
         <li class="nav-item {% if request.path == signup %} current {% endif %}"><a class="navlink" href="{% url 'signup' %}" data-hover="Register">Register</a></li>
         {% endif %} 
-      </ul>
-      </div>
+        </ul>
 </nav>
 </div>
 
@@ -79,9 +81,9 @@
 
 {% block content %}
 
-{% endblock content %}
-</body>
 
+</body>
+{% endblock content %}
 
 
 <footer>

@@ -3,8 +3,11 @@ body{
   font-family: 'Mukta', sans-serif;
 	height:100vh;
 	min-height:550px;
-	background-image:url(https://i.pinimg.com/474x/c8/63/c6/c863c62bcdaa5bc68e4b462a2b1b1709.jpg)!important;
-	position:relative;
+	background-image:url(https://images.unsplash.com/photo-1570797319977-e59a77ab75c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWV0cm8lMjByYWlsfGVufDB8fDB8fA%3D%3D&w=1000&q=80)!important;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    position:relative;
     overflow-y: hidden;
 }
 a{

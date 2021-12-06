@@ -36,3 +36,5 @@ def faq(request):
     return render(request, 'railapp/faq.html')
 def userprofile(request):
     return render(request, 'railapp/userprofile.html')
+def trainmasterprofile(request):
+    return render(request, 'railapp/trainmasterprofile.html')

@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding-top: 40px;
     color: #2e323c;
-    background: #f5f6fa;
+    background: #343b43;
     position: relative;
     height: 100%;
 }
@@ -41,21 +41,4 @@ body {
 .account-settings .about p {
     font-size: 0.825rem;
 }
-.form-control {
-    border: 1px solid #cfd1d8;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    font-size: .825rem;
-    background: #ffffff;
-    color: #2e323c;
-}
 
-.card {
-    background: #ffffff;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border: 0;
-    margin-bottom: 1rem;
-}
