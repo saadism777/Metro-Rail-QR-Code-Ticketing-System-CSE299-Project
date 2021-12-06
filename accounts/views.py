@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.views.generic import CreateView
 
-from .forms import GeneralUserSignUpForm,TrainMasterSignUpForm
+from .forms import GeneralUserSignUpForm,TrainMasterSignUpForm,OrderForm
 from .models import User,GeneralUser,Book,Route
 
 
@@ -127,6 +127,7 @@ def search(request):
             dest_r = request.POST.get('destination')
             date_r = request.POST.get('date')
             route_list = Route.objects.filter(source=source_r, dest=dest_r, date=date_r)
+
             if route_list:
                 return render(request, 'list.html', locals())
             else:
@@ -134,6 +135,20 @@ def search(request):
                 return render(request, 'search.html', context)
     else:
             return render(request, 'search.html')
+
+
+def createOrder(request):
+	form = OrderForm()
+	if request.method == 'POST':
+		#print('Printing POST:', request.POST)
+		form = OrderForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('/')
+
+	context = {'form':form}
+	return render(request, 'order_form.html', context)
+
 
 
 

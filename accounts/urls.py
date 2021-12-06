@@ -11,4 +11,5 @@ urlpatterns = [
   path('accounts/signup/trainmaster/', TrainMasterSignUpView.as_view(), name='trainmaster_signup'),
   path('log_out/', views.log_out, name="log_out"),
   path('search/', views.search, name="search"),
+  path('create_order/', views.createOrder, name="create_order"),
 ]

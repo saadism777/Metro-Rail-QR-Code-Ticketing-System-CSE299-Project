@@ -1,8 +1,9 @@
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 
-from .models import GeneralUser, User, TrainMaster
+from .models import GeneralUser, User, TrainMaster,Book
 
 class GeneralUserSignUpForm(UserCreationForm):
     first_name = forms.CharField(required=True)
@@ -56,3 +57,8 @@ class TrainMasterSignUpForm(UserCreationForm):
         trainmaster.save()
 
         return trainmaster
+
+class OrderForm(ModelForm):
+	class Meta:
+		model = Book
+		fields = '__all__'

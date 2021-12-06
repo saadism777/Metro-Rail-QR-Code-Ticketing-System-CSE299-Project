@@ -1,0 +1,27 @@
+{%  extends 'railapp/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+			<form action="" method="POST">
+				{% csrf_token %}
+                <div class="col-25">
+					<div class="container">
+						
+						<p> <span class="price">{{form}}</span></p>
+						
+						
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

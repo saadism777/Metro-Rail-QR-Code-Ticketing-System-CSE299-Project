@@ -18,7 +18,7 @@
 
     {% for row in route_list %}
     <tr>
-        <td>{{row.id}}</td>
+        <td>{{row.routeId}}</td>
         <td>{{row.source}}</td>
         <td>{{row.dest}}</td>
         <td>{{row.nos}}</td>
@@ -31,7 +31,7 @@
     </tr>
     {% endfor %}
 </table>
-<form action="{% url 'checkout' %}" method="post">
+<form action="{% url 'create_order' %}" method="post">
     {% csrf_token %}
     <div class="col-auto">
         <label for="example-email-input" class="col-2 col-form-label">Route ID</label>
@@ -39,7 +39,7 @@
             <input name='route_id' class="form-control" type="number" id="example-email-input">
         </div>
     </div>
-    <div class="col=auto">
+    <div class="col-auto">
         <label for="example-email-input" class="col-2 col-form-label">Number of seats</label>
         <div class="col-5">
             <input name='no_seats' class="form-control" type="number">
