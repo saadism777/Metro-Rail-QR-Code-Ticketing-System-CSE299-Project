@@ -59,6 +59,10 @@ class TrainMasterSignUpForm(UserCreationForm):
         return trainmaster
 
 class OrderForm(ModelForm):
-	class Meta:
-		model = Book
-		fields = ['routeid','nos']
+    class Meta:
+        model = Book
+        fields = ['routeid','nos']
+        widgets = {
+            'routeid': forms.NumberInput(attrs={'class':'form-control'}),
+            'nos': forms.NumberInput(attrs={'class':'form-control'})
+        }

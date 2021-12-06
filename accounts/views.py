@@ -163,9 +163,7 @@ def createOrder(request):
                 else:
                     context["error"] = "Sorry select fewer number of seats"
                     return render(request, 'error.html', context)
-            else:
-                context["error"] = "Sorry no routes availiable"
-                return render(request, 'error.html', context)
+           
     context = {'form':form}
     return render(request, 'order_form.html', context)
 
