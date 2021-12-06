@@ -3,25 +3,14 @@
 {% block content %}
 
 
-<div class="row">
-	<div class="col-md-6">
-		<div class="card card-body">
-
-			<form action="" method="POST">
+<table>
+	<form action="" method="POST">
 				{% csrf_token %}
-                <div class="col-25">
-					<div class="container">
-						
-						<p> <span class="price">{{form}}</span></p>
-						
-						
-					</div>
-				</div>
-			</form>
-
-		</div>
-	</div>
-</div>
+                {{form.as_table}}
+                <input type="submit" name="Submit">
+				
+	</form>
+</table>
 
 
 {% endblock %}

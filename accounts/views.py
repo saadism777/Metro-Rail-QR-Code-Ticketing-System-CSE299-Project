@@ -138,16 +138,40 @@ def search(request):
 
 
 def createOrder(request):
-	form = OrderForm()
-	if request.method == 'POST':
-		#print('Printing POST:', request.POST)
-		form = OrderForm(request.POST)
-		if form.is_valid():
-			form.save()
-			return redirect('/')
+    context = {}
+    form = OrderForm()
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            id_r = form.cleaned_data['routeid']         
+            seats_r = form.cleaned_data['nos']
+            p = Route.objects.get(routeId=id_r)
+            if p:
+                if p.rem > int(seats_r):
+                  username_r = request.user.username
+                  email_r = request.user.email
+                  source_r = p.source
+                  dest_r = p.dest
+                  date_r = p.date
+                  time_r = p.time
+                  cost = int(seats_r) * p.price
+                  rem_r = p.rem - seats_r
+                  Route.objects.filter(routeId=id_r).update(rem=rem_r)
+                  book = Book(username=username_r,email=email_r,source=source_r,dest=dest_r,date=date_r,time=time_r,routeid=id_r,nos=seats_r,price=cost, status='BOOKED')
+                  book.save()
+                  return redirect('/')
+                else:
+                    context["error"] = "Sorry select fewer number of seats"
+                    return render(request, 'error.html', context)
+            else:
+                context["error"] = "Sorry no routes availiable"
+                return render(request, 'error.html', context)
+    context = {'form':form}
+    return render(request, 'order_form.html', context)
 
-	context = {'form':form}
-	return render(request, 'order_form.html', context)
+
+
+
 
 
 

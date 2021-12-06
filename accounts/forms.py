@@ -61,4 +61,4 @@ class TrainMasterSignUpForm(UserCreationForm):
 class OrderForm(ModelForm):
 	class Meta:
 		model = Book
-		fields = '__all__'
+		fields = ['routeid','nos']
