@@ -168,6 +168,36 @@ def createOrder(request):
     return render(request, 'order_form.html', context)
 
 
+def cancellings(request):
+    context = {}
+    
+    if request.method == 'POST':
+      
+            id_r = request.POST.get('route_id')
+            try:
+                book = Book.objects.get(id=id_r)
+                route = Route.objects.get(routeId=book.routeid)
+                rem_r = route.rem + book.nos
+                Route.objects.filter(routeId=book.routeid).update(rem=rem_r)
+                #nos_r = book.nos - seats_r
+                Book.objects.filter(id=id_r).update(status='CANCELLED')
+                Book.objects.filter(id=id_r).update(nos=0)
+                return redirect(seebookings)
+            except Book.DoesNotExist:
+                context["error"] = "Sorry You have not booked that bus"
+                return render(request, 'error.html', context)
+    else:
+        return render(request, 'search.html')
+
+def seebookings(request,new={}):
+    context = {}
+    username_r = request.user.username
+    book_list = Book.objects.filter(username=username_r)
+    if book_list:
+        return render(request, 'booklist.html', locals())
+    else:
+        context["error"] = "Sorry no buses booked"
+        return render(request, 'search.html', context)
 
 
 
