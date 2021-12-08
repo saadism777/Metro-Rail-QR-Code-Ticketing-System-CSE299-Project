@@ -13,52 +13,20 @@
     <div class="faqs-container">
       <h2>Frequently Asked Questions</h2>
 
-      <div class="questions-container">
-        <div class="content-container">
-          <div class="faq-header">
-            <h3>How do I purchase a Ticket?</h3>
-            <span class="open active">+</span>
-            <span class="close">-</span>
-          </div>
-
-          <div class="content">
-            <p>
-              Go to our Navbar and click on ticket. Select Date, Station ,Destination and click checkout. Complete payment and get your QR code.
-            </p>
-
-          </div>
-        </div>
-
-        <div class="content-container">
-          <div class="faq-header">
-            <h3>Can i purchase more than one ticket?</h3>
-            <span class="open active">+</span>
-            <span class="close">-</span>
-          </div>
-
-          <div class="content">
-            <p>
-              One user can buy one ticket at a time. You can buy as many times as you want.
-            </p>
-          </div>
-        </div>
-
-        <div class="content-container">
-          <div class="faq-header">
-            <h3>How to cancel Ticket?</h3>
-            <span class="open active">+</span>
-            <span class="close">-</span>
-          </div>
-
-          <div class="content">
-            <p>
-              You can contact admin to cancel your order.
-            </p>
-
-            
-          </div>
-        </div>
-      </div>
+     
+      welcome {{userdetail.username}}
+          <br/>
+          Asked Questions.
+          <br/>
+          {% for question in questions %}
+          <li>{{question.title}}</li>
+          {% endfor %}
+          <br/>
+          Answers.
+          {% for answer in answers %}
+          <li>{{answer.answer_text}} by {{answer.user.username}} </li>
+          {% endfor %}
+      
     </div>
 
     <script src="{% static 'js/faq.js'%}"></script>

@@ -33,7 +33,15 @@ def checkout(request):
 def Confirmation(request):
     return render(request, 'railapp/confirmation.html')
 def faq(request):
-    return render(request, 'railapp/faq.html')
+    content={}
+    if request.user.is_authenticated:
+        ques_obj = Questions.objects.all()
+        ans_obj = Answers.objects.all()
+        content={'ques_obj':ques_obj, 'ans_obj':ans_obj}
+        return render(request, 'railapp/faq.html', content)
+
+
+    
 def userprofile(request):
     return render(request, 'railapp/userprofile.html')
 def trainmasterprofile(request):
