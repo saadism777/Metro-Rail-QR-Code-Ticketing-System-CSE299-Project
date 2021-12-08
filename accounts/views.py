@@ -157,12 +157,15 @@ def createOrder(request):
                   cost = int(seats_r) * p.price
                   rem_r = p.rem - seats_r
                   Route.objects.filter(routeId=id_r).update(rem=rem_r)
-                  book = Book(username=username_r,email=email_r,source=source_r,dest=dest_r,date=date_r,time=time_r,routeid=id_r,nos=seats_r,price=cost, status='BOOKED')
+                  p.rem=rem_r
+                  book = Book(username=username_r,email=email_r,source=source_r,
+                             dest=dest_r,date=date_r,time=time_r,
+                             routeid=id_r,nos=seats_r,price=cost, status='Booked')
                   book.save()
-                  return redirect('/')
+                  return redirect('seebookings')
                 else:
-                    context["error"] = "Sorry select fewer number of seats"
-                    return render(request, 'error.html', context)
+                  context["error"] = "Sorry select fewer number of seats"
+                  return render(request, 'error.html', context)
            
     context = {'form':form}
     return render(request, 'order_form.html', context)
@@ -178,11 +181,20 @@ def cancellings(request):
                 book = Book.objects.get(id=id_r)
                 route = Route.objects.get(routeId=book.routeid)
                 rem_r = route.rem + book.nos
+                route.rem=rem_r
                 Route.objects.filter(routeId=book.routeid).update(rem=rem_r)
                 #nos_r = book.nos - seats_r
-                Book.objects.filter(id=id_r).update(status='CANCELLED')
+                Book.objects.filter(id=id_r).update(status='Cancelled')
+                
                 Book.objects.filter(id=id_r).update(nos=0)
-                return redirect(seebookings)
+                Book.objects.filter(id=id_r).update(price=0)
+                
+               
+                
+
+              
+                
+                return redirect('seebookings')
             except Book.DoesNotExist:
                 context["error"] = "Sorry You have not booked that bus"
                 return render(request, 'error.html', context)

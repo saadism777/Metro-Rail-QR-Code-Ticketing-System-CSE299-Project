@@ -43,9 +43,9 @@ class Route(models.Model):
     def __str__(self):
         return self.dest
 class Book(models.Model):
-    BOOKED = 'B'
-    CANCELLED = 'C'
-    CONFIRMED = 'O'
+    BOOKED = 'Booked'
+    CANCELLED = 'Cancelled'
+    CONFIRMED = 'Confirmed'
 
     TICKET_STATUSES = ((BOOKED, 'Booked'),
                        (CANCELLED, 'Cancelled'),
@@ -58,7 +58,7 @@ class Book(models.Model):
     routeid = models.IntegerField()
     nos = models.DecimalField(decimal_places=0, max_digits=2)
     price = models.DecimalField(decimal_places=2, max_digits=6)
-    status = models.CharField(choices=TICKET_STATUSES, default=BOOKED, max_length=2)
+    status = models.CharField(choices=TICKET_STATUSES, default=BOOKED, max_length=15)
     date = models.DateField()
     time = models.TimeField()
 
