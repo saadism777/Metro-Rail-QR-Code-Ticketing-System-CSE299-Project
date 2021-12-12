@@ -7,25 +7,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FAQ</title>
+    <link rel="stylesheet" href="./css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/faq.css'%}" />
   </head>
   <body>
-    <div class="faqs-container">
-      <h2>Frequently Asked Questions</h2>
+    <div class="faqs-container">    
+      <h2>Hi! Welcome {{userdetail.username}}</h2>
+      <h3>Frequently Asked Questions</h3> 
+      <br/>
+      {% for question in questions %}
+      <h4>{{question.title}}</h4>
+      {% endfor %}
 
-     
-      welcome {{userdetail.username}}
-          <br/>
-          Asked Questions.
-          <br/>
-          {% for question in questions %}
-          <li>{{question.title}}</li>
-          {% endfor %}
-          <br/>
-          Answers.
-          {% for answer in answers %}
-          <li>{{answer.answer_text}} by {{answer.user.username}} </li>
-          {% endfor %}
+      <h2> Answers.</h2>
+      {% for answer in answers %}
+      <h4><li>{{answer.answer_text}} Answered by <h5>@{{answer.user.username}}</h5></li></h4>
+      {% endfor %}
+      <br/>
+    
       
     </div>
 
