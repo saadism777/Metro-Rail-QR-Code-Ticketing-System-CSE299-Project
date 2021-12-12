@@ -123,8 +123,11 @@ class TrainMasterSignUpView(CreateView):
 def search(request):
     context = {}
     if request.method == 'POST':
-            source_r = request.POST.get('source')
-            dest_r = request.POST.get('destination')
+            p = request.POST.get('source')
+            source_r= p.capitalize()
+            
+            q = request.POST.get('destination')
+            dest_r = q.capitalize()
             date_r = request.POST.get('date')
             route_list = Route.objects.filter(source=source_r, dest=dest_r, date=date_r)
 
@@ -196,7 +199,7 @@ def cancellings(request):
                 
                 return redirect('seebookings')
             except Book.DoesNotExist:
-                context["error"] = "Sorry You have not booked that bus"
+                context["error"] = "No bookings available"
                 return render(request, 'error.html', context)
     else:
         return render(request, 'search.html')
@@ -208,7 +211,7 @@ def seebookings(request,new={}):
     if book_list:
         return render(request, 'booklist.html', locals())
     else:
-        context["error"] = "Sorry no buses booked"
+        context["error"] = "Sorry no route booked"
         return render(request, 'search.html', context)
 
 
