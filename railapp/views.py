@@ -35,11 +35,14 @@ def Confirmation(request):
 def faq(request):
     content={}
     if request.user.is_authenticated:
-        ques_obj = Questions.objects.all()
+        user=request.user
+        user.backend = 'django.contrib.core.backends.ModelBackend'
+        ques_obj = Questions.objects.all
+        content['userdetail'] = user
+        content['questions'] = ques_obj
         ans_obj = Answers.objects.all()
-        content={'ques_obj':ques_obj, 'ans_obj':ans_obj}
+        content['answers'] = ans_obj
         return render(request, 'railapp/faq.html', content)
-
 
     
 def userprofile(request):
