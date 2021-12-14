@@ -1,6 +1,9 @@
+import collections
 from django.shortcuts import render,redirect
 from django.core.mail import send_mail
 from django.contrib import messages
+from django.db import connection
+from collections import namedtuple
 from django.http import HttpResponse
 from .models import *
 # Create your views here.
@@ -35,13 +38,9 @@ def Confirmation(request):
 def faq(request):
     content={}
     if request.user.is_authenticated:
-        user=request.user
-        user.backend = 'django.contrib.core.backends.ModelBackend'
-        ques_obj = Questions.objects.all
-        content['userdetail'] = user
-        content['questions'] = ques_obj
+        ques_obj = Questions.objects.all()
         ans_obj = Answers.objects.all()
-        content['answers'] = ans_obj
+        content={'ques_obj':ques_obj, 'ans_obj':ans_obj}
         return render(request, 'railapp/faq.html', content)
 
     
@@ -49,3 +48,22 @@ def userprofile(request):
     return render(request, 'railapp/userprofile.html')
 def trainmasterprofile(request):
     return render(request, 'railapp/trainmasterprofile.html')
+
+def TrainSchedule(request):
+    context = {'is_submit': False}
+    if request.method == "POST":
+        train_no = request.POST.get('train-no')
+        with connection.cursor() as cursor:
+            cursor.execute(f"SELECT * FROM `railapp_train` WHERE `train_no`='{train_no}'")
+            train_obj =collections.namedtuplefetcall(cursor)
+        if not train_obj:
+            messages.error(request, 'The given Train Number does not exist.')
+        else:
+            context['is_submit'] = True
+            train_obj = train_obj[0]
+            with connection.cursor() as cursor:
+                cursor.execute(f"SELECT * FROM `railapp_trainschedule` INNER JOIN `railapp_station` ON (`railapp_trainschedule`.`station_id` =`railapp_station`.`station_code`) WHERE `train_id`='{train_no}' ORDER BY distance ASC")
+                schedule_obj =collections.namedtuplefetchall(cursor)
+            context['train'] = train_obj
+            context['schedules'] = schedule_obj
+    return render(request, 'railapp/trainschedule.html')
