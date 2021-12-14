@@ -13,6 +13,9 @@
     <td>DATE</td>
     <td>TIME</td>
     <td>STATUS</td>
+    <td>PAYMENT STATUS</td>
+    <td> </td>
+    <td></td>
 
 
     </thead>
@@ -29,31 +32,15 @@
         <td>{{row.date}}</td>
         <td>{{row.time}}</td>
         <td>{{row.status}}</td>
+        <td>{{row.payment_status}}</td>
+        <td><a class="btn btn-sm btn-warning" href="{% url 'payments' row.id%}">Make Payment</a></td>
+		<td><a class="btn btn-sm btn-danger" href="{% url 'cancellings' row.id%}">Cancel Booking</a></td>
 
 
     </tr>
     {% endfor %}
     </thead>
 </table>
-<form action="{% url 'cancellings' %}" method="post">
-    
-    {% csrf_token %}
-    <div class="col-auto">
-        
-        <div class="col-5">
-            <input name='route_id' class="form-control" type="number" id="example-email-input" placeholder="Enter Booking Id for cancelling">
-        </div>
-    </div>
 
-    <br>
-    <br>
-    <div class="pull-right">
-        <button type="submit" class="btn btn-danger float-left">Cancel Booking</button>
-    </div>
-
-
-    {{error}}
-
-</form>
 
 {% endblock %}
