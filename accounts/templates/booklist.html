@@ -4,7 +4,7 @@
 <h2>List of Routes</h2>
 <table class="table table-striped">
     <thead style="background-color: blue;color: white;">
-    <td>BOOKING ID</td>
+    <td>ROUTE ID</td>
     <td>USER NAME</td>
     <td>SOURCE</td>
     <td>DESTINATION</td>
@@ -22,7 +22,8 @@
     <thead style="background-color: rgb(80, 82, 81);color: rgb(255, 255, 255);">
     {% for row in book_list %}
     <tr>
-        <td>{{row.id}}</td>
+        
+        <td>{{row.routeid}}</td>
         <td>{{row.username}}</td>
         
         <td>{{row.source}}</td>

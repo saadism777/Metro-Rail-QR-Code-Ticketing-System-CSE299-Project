@@ -181,13 +181,19 @@ def payment(request,pk):
         form = OrderForm(request.POST, instance=book)
         if book.payment_status=='Not_Paid':
             Book.objects.filter(id=pk).update(payment_status='Paid')
-            return redirect('seebookings')
+            return render(request, 'payment.html')
+            
+        elif book.payment_status=='Refunded':
+            context["error"] = "Can not make payment. You have already cancelled this booking"
+            return render(request, 'error.html', context)
+            
         else :
             context["error"] = "You have already paid for this booking"
             return render(request, 'error.html', context)
         
     context = {'form':form}
     return render(request, 'order_form.html',context)
+
 
 def cancellings(request,pk):
     context = {}
@@ -197,8 +203,12 @@ def cancellings(request,pk):
         if book.payment_status=='Paid':
             Book.objects.filter(id=pk).update(payment_status='Refunded')
             return redirect('seebookings')
+        elif book.payment_status=='Not_Paid':
+            context["error"] = "Booking Cancelled"
+            return render(request, 'error.html', context)
+            
         else :
-            context["error"] = "We Have already Refunded your booking"
+            context["error"] = "We Have already Cancelled and Refunded for your booking"
             return render(request, 'error.html', context)
         
     context = {'form':form}
