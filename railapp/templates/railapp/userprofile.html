@@ -38,8 +38,33 @@ width: 66rem;
 <div class="container">
   <div class="row gutters">
 
+<<<<<<< Updated upstream
   
   <div class="col-xl-12 col-lg-9 col-md-12 col-sm-12 col-12">
+=======
+        <div class="about">
+          <h6 style="text-align:center;padding:1rem;">Travel History</h6>
+          <p> {% for row in book_list %}
+            <tr>
+                <td>{{row.id}}</td>
+                <!-- <td>{{row.username}}</td> -->
+                <td>{{row.source}}</td>
+                <td>{{row.dest}}</td>
+                <td>{{row.nos}}</td>
+                <td>{{row.price}}</td>
+                <td>{{row.date}}</td>
+                <td>{{row.time}}</td>
+                <td>{{row.status}}</td><br>
+        </tr>{% endfor %}
+        <br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+>>>>>>> Stashed changes
   <div class="card h-100">
     <div class="card-body">
       <div class="row gutters">
