@@ -1,4 +1,5 @@
 {% extends 'railapp/main.html' %}
+
 {% load static %}
 {% block content %}
 <html>
@@ -44,16 +45,6 @@
   margin-top: 2rem;
 
 }
-.post{
-  background-color: #343b43;
-  color: rgba(209, 185, 50, 0.89);
-  display: block;
-  border-radius: 55px;
-  margin: auto;
-  padding: 1rem;
-  margin-top: 2rem;
-  width: 60rem;
-}
 .inner{
   margin-top: 3rem;
 }
@@ -96,22 +87,22 @@ textarea.form-control{
 {% if request.user.is_authenticated and user.is_trainmaster == True %}
 
 <div class="inner">
-  <form class="{% url 'home' %}" method="post">
+  <form class="{% url 'contact' %}" method="post">
     {% csrf_token %}
     <h3 style="text-align:center;">Post Announcement {{name}}</h3>
     <p style="text-align:center;">If you have any announcement to make type the message in the box below. </p>
     
     <label class="form-group" >
-      <input class="form-control" type="text" id="fname" name="title"><br><br>
-      <textarea name='content' id="" class="form-control" required></textarea>
+      <textarea name='subject' id="" class="form-control" required></textarea>
       <span class="border"></span>
     </label>
     <button type="submit" class="btn
     dento-btn">Post</button>
 
-
+    
   </form>
 </div>
+<<<<<<< HEAD
   {% for row in post_list %}
   <div class="post">
   <h2 style="text-align: center;">{{row.title}}</h2>
@@ -121,6 +112,9 @@ textarea.form-control{
   </div>
   {% endfor %}
 </div>
+=======
+
+>>>>>>> parent of df201f2 (Announcement Functionality Imolemented)
 {% else %}
 
 
@@ -148,6 +142,7 @@ textarea.form-control{
 </div>
 
 
+<<<<<<< HEAD
 <div class="post" style="margin-bottom: 3rem;">
 <h2 style="text-align: center;">{{post_list_2.title}}</h2>
 <h5 style="text-align: right;">by Trainmaster <br> {{post_list_2.username}}</h5> <br>
@@ -157,6 +152,9 @@ textarea.form-control{
 
 
 <!-- <div id="booking" class="section ">
+=======
+<div id="booking" class="section ">
+>>>>>>> parent of df201f2 (Announcement Functionality Imolemented)
 		<div class="section-center">
 			<div class="container">
 				<div class="mainrow">
@@ -222,7 +220,17 @@ textarea.form-control{
 				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
+
+
+
+
+ 
+
+
+
+
+
 
 <div class="mainrow ">
   <div class="col-md-4">
@@ -264,6 +272,28 @@ textarea.form-control{
 
 
  {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 {% endblock content %}

@@ -239,6 +239,3 @@ def seebookings(request,new={}):
 
 
 
-
-
-

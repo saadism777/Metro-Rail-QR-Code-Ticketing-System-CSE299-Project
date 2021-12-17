@@ -5,13 +5,8 @@
   <title>Profile</title>
 <link rel="stylesheet" href="{% static 'css/contact.css' %}">
 <style>
-.thistory{
-margin:auto;
-width: 66rem;
-  } 
-.container{
+  .container{
     padding: 4rem!important;
-    margin-top: 5rem;
 }
 .form-control {
   border: 1px solid #cfd1d8;
@@ -37,9 +32,20 @@ width: 66rem;
 
 <div class="container">
   <div class="row gutters">
+  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+  <div class="card h-100">
+    <div class="card-body">
+      <div class="account-settings">
 
-  
-  <div class="col-xl-12 col-lg-9 col-md-12 col-sm-12 col-12">
+        <div class="about">
+          <h6 style="text-align:center;padding:1rem;">Travel History</h6>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
   <div class="card h-100">
     <div class="card-body">
       <div class="row gutters">
@@ -96,51 +102,7 @@ width: 66rem;
     </div>
   </div>
   </div>
-  
   </div>
-  
   </div>
-  <div class="thistory">
-    <div class="col-xl-12 col-lg-9 col-md-12 col-sm-12 col-12">
-    <div class="card h-100">
-      <div class="card-body">
-        <div class="account-settings">
-  
-          <div class="about">
-            <h6 style="text-align:center;padding:1rem;">Travel History</h6>
-            <table class="table table-striped">
-              <thead style="background-color: #343b43;color: rgba(209, 185, 50, 0.89);">
-              <td>SOURCE</td>
-              <td>DESTINATION</td>
-              <td>NUM OF SEATS</td>
-              <td>PRICE</td>
-              <td>DATE</td>
-              <td>TIME</td>
-              <td>STATUS</td>
-          
-          
-              </thead>
-              <thead style="background-color: #343b43;color: rgb(255, 255, 255);">
-              {% for row in book_list %}
-              <tr>
-                  <td>{{row.source}}</td>
-                  <td>{{row.dest}}</td>
-                  <td>{{row.nos}}</td>
-                  <td>{{row.price}}</td>
-                  <td>{{row.date}}</td>
-                  <td>{{row.time}}</td>
-                  <td>{{row.status}}</td>
-          
-          
-              </tr>
-              {% endfor %}
-              </thead>
-          </table>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
   <body>
   {% endblock content %}

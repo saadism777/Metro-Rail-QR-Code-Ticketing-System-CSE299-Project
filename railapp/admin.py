@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Announcement, Questions, Answers
+from .models import Questions, Answers
 
 # Register your models here.
 from railapp.models import Contact
@@ -20,4 +20,3 @@ class QuestionsAdmin(admin.ModelAdmin):
 admin.site.register(Questions, QuestionsAdmin)
 admin.site.register(Answers)
 admin.site.register(Contact)
-admin.site.register(Announcement)
