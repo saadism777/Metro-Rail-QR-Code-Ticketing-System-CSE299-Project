@@ -2,11 +2,7 @@ from django.shortcuts import render,redirect
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.http import HttpResponse
-<<<<<<< Updated upstream
 from railapp import models
-=======
-
->>>>>>> Stashed changes
 from accounts.models import Book
 from .models import *
 # Create your views here.
@@ -68,11 +64,7 @@ def userprofile(request,new={}):
         return render(request, 'railapp/userprofile.html', locals())
     else:
         context["error"] = "Sorry no buses booked"
-<<<<<<< Updated upstream
         return render(request, 'railapp/userprofile.html', context)
-=======
-        return render(request, 'userprofile.html', context)
->>>>>>> Stashed changes
 
 def trainmasterprofile(request):
     return render(request, 'railapp/trainmasterprofile.html')
