@@ -103,10 +103,39 @@ textarea.form-control{
   </form>
 </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+    <!-- <table class="table table-striped">
+      <thead style="background-color: blue;color: white;">
+      <td>Username</td>
+      <td>Title</td>
+      <td>Content</td>
+      <td>Date</td>
+      
+  
+  
+      </thead>
+      <thead style="background-color: rgb(80, 82, 81);color: rgb(255, 255, 255);">
+      {% for row in post_list %}
+      <tr>
+          <td>{{row.username}}</td>
+         
+          
+          <td>{{row.title}}</td>
+          <td>{{row.content}}</td>
+          <td>{{row.created_on}}</td>
+          
+  
+  
+      </tr>
+      {% endfor %}
+      </thead>
+  </table> -->
+>>>>>>> parent of 719d25d (Migrated and updated)
   {% for row in post_list %}
   <div class="post">
-  <h2 style="text-align: center;">{{row.title}}</h2>
-  <h5 style="text-align: right;">by {{row.username}}</h5> <br>
+  <h2 style="text-align: center;">{{row.title}}</h2><h5 style="text-align: right;">by {{row.username}}</h5> <br>
   <h5 style="color: aliceblue;">{{row.content}}</h5> <br>
   <small style="text-align: right;">{{row.created_on}}</small>
   </div>
@@ -144,8 +173,7 @@ textarea.form-control{
 
 <<<<<<< HEAD
 <div class="post" style="margin-bottom: 3rem;">
-<h2 style="text-align: center;">{{post_list_2.title}}</h2>
-<h5 style="text-align: right;">by Trainmaster <br> {{post_list_2.username}}</h5> <br>
+<h2 style="text-align: center;">{{post_list_2.title}}</h2><h5 style="text-align: right;">by Trainmaster <br> {{post_list_2.username}}</h5> <br>
 <h5 style="color: aliceblue;">{{post_list_2.content}}</h5> <br>
 <small style="text-align: right;">{{post_list_2.created_on}}</small>
 </div>
