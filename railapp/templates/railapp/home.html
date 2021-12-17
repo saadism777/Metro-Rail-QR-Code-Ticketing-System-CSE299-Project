@@ -1,5 +1,4 @@
 {% extends 'railapp/main.html' %}
-
 {% load static %}
 {% block content %}
 <html>
@@ -11,6 +10,16 @@
 <link rel="stylesheet" href="{% static 'css/homebuy.css'%}">
 <link rel="stylesheet" href="{% static 'css/contact.css' %}">
 <style>
+  .post{
+  background-color: #343b43;
+  color: rgba(209, 185, 50, 0.89);
+  display: block;
+  border-radius: 55px;
+  margin: auto;
+  padding: 1rem;
+  margin-top: 2rem;
+  width: 60rem;
+  }
 .carousel {
     position: relative;
     width: 50rem;
@@ -87,13 +96,14 @@ textarea.form-control{
 {% if request.user.is_authenticated and user.is_trainmaster == True %}
 
 <div class="inner">
-  <form class="{% url 'contact' %}" method="post">
+  <form class="{% url 'home' %}" method="post">
     {% csrf_token %}
     <h3 style="text-align:center;">Post Announcement {{name}}</h3>
     <p style="text-align:center;">If you have any announcement to make type the message in the box below. </p>
     
     <label class="form-group" >
-      <textarea name='subject' id="" class="form-control" required></textarea>
+      <input class="form-control" type="text" id="fname" name="title"><br><br>
+      <textarea name='content' id="" class="form-control" required></textarea>
       <span class="border"></span>
     </label>
     <button type="submit" class="btn
@@ -102,7 +112,14 @@ textarea.form-control{
     
   </form>
 </div>
-
+{% for row in post_list %}
+  <div class="post">
+  <h2 style="text-align: center;">{{row.title}}</h2>
+  <h5 style="text-align: right;">by {{row.username}}</h5> <br>
+  <h5 style="color: aliceblue;">{{row.content}}</h5> <br>
+  <small style="text-align: right;">{{row.created_on}}</small>
+  </div>
+  {% endfor %}
 {% else %}
 
 
@@ -130,75 +147,11 @@ textarea.form-control{
 </div>
 
 
-<div id="booking" class="section ">
-		<div class="section-center">
-			<div class="container">
-				<div class="mainrow">
-					<div class="booking-form">
-						<form>
-							<div class="row no-margin">
-								<div class="col-md-3">
-									<div class="form-header">
-										<h2>Book Now</h2>
-									</div>
-								</div>
-								<div class="col-md-7">
-									<div class="row no-margin">
-										<div class="col-md-4">
-											<div class="form-group">
-												<span class="form-label">Destination</span>
-                        <select id="destination" name="destination">
-                          <option value="mirpur">Mirpur 10</option>
-                          <option value="uttara">Uttara</option>
-                          <option value="agargao">Agargaon</option>
-                        </select>
-												<input class="form-control" type="submit">
-											</div>
-										</div>
-										<div class="col-md-4">
-											<div class="form-group">
-												<span class="form-label">Check out</span>
-												<input class="form-control" type="date">
-											</div>
-										</div>
-										<div class="col-md-2">
-											<div class="form-group">
-												<span class="form-label">Guests</span>
-												<select class="form-control">
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-												</select>
-												<span class="select-arrow"></span>
-											</div>
-										</div>
-										<div class="col-md-2">
-											<div class="form-group">
-												<span class="form-label">Kids</span>
-												<select class="form-control">
-													<option>0</option>
-													<option>1</option>
-													<option>2</option>
-												</select>
-												<span class="select-arrow"></span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-2">
-									<div class="form-btn">
-										<button class="submit-btn">Buy Ticket!</button>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
+<div class="post" style="margin-bottom: 3rem;">
+  <h2 style="text-align: center;">{{post_list_2.title}}</h2><h5 style="text-align: right;">by Trainmaster <br> {{post_list_2.username}}</h5> <br>
+  <h5 style="color: aliceblue;">{{post_list_2.content}}</h5> <br>
+  <small style="text-align: right;">{{post_list_2.created_on}}</small>
+  </div>
 
 
  

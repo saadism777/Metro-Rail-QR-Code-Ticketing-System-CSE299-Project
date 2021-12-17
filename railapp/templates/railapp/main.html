@@ -54,7 +54,7 @@
         <li class="nav-item {% if request.path == faq %} current {% endif %}"id="hide2"><a class="navlink" href="{% url 'faq' %}" data-hover="FAQ">FAQ</a></li>
         <li class="nav-item {% if request.path == contact %} current {% endif %}"id="hide3"><a class="navlink" href="{% url 'contact' %}" data-hover="Contact Us">Contact Us</a></li>
         
-        {% if request.user.is_authenticated and user.is_guser == True %}
+        {% if request.user.is_authenticated and user.is_trainmaster != True %}
         <li class="nav-item {% if request.path == userprofile %} current {% endif %}"><a class="navlink" href="{% url 'userprofile' %}" data-hover="Profile">Profile</a></li>
         <li class="nav-item"><a class="navlink" href="{% url 'log_out' %}" data-hover="Log Out">Log Out</a></li>
         
