@@ -12,8 +12,6 @@ urlpatterns = [
   path('log_out/', views.log_out, name="log_out"),
   path('search/', views.search, name="search"),
   path('create_order/', views.createOrder, name="create_order"),
-  path('seebookings/', views.seebookings, name="seebookings"),
-
-  path('cancellings/<str:pk>/', views.cancellings, name="cancellings"),
-  path('payments/<str:pk>/', views.payment, name="payments"),
+  path('cancellings', views.cancellings, name="cancellings"),
+  path('seebookings', views.seebookings, name="seebookings"),
 ]
