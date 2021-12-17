@@ -4,7 +4,7 @@
 <h2>List of Routes</h2>
 <table class="table table-striped">
     <thead style="background-color: blue;color: white;">
-    <td>BOOKING ID</td>
+    <td>ROUTE ID</td>
     <td>USER NAME</td>
     <td>SOURCE</td>
     <td>DESTINATION</td>
@@ -13,13 +13,17 @@
     <td>DATE</td>
     <td>TIME</td>
     <td>STATUS</td>
+    <td>PAYMENT STATUS</td>
+    <td> </td>
+    <td></td>
 
 
     </thead>
     <thead style="background-color: rgb(80, 82, 81);color: rgb(255, 255, 255);">
     {% for row in book_list %}
     <tr>
-        <td>{{row.id}}</td>
+        
+        <td>{{row.routeid}}</td>
         <td>{{row.username}}</td>
         
         <td>{{row.source}}</td>
@@ -29,31 +33,15 @@
         <td>{{row.date}}</td>
         <td>{{row.time}}</td>
         <td>{{row.status}}</td>
+        <td>{{row.payment_status}}</td>
+        <td><a class="btn btn-sm btn-warning" href="{% url 'payments' row.id%}">Make Payment</a></td>
+		<td><a class="btn btn-sm btn-danger" href="{% url 'cancellings' row.id%}">Cancel Booking</a></td>
 
 
     </tr>
     {% endfor %}
     </thead>
 </table>
-<form action="{% url 'cancellings' %}" method="post">
-    
-    {% csrf_token %}
-    <div class="col-auto">
-        
-        <div class="col-5">
-            <input name='route_id' class="form-control" type="number" id="example-email-input" placeholder="Enter Booking Id for cancelling">
-        </div>
-    </div>
 
-    <br>
-    <br>
-    <div class="pull-right">
-        <button type="submit" class="btn btn-danger float-left">Cancel Booking</button>
-    </div>
-
-
-    {{error}}
-
-</form>
 
 {% endblock %}
