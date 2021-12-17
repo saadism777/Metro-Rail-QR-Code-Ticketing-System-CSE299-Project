@@ -47,9 +47,17 @@ class Book(models.Model):
     CANCELLED = 'Cancelled'
     CONFIRMED = 'Confirmed'
 
+    PAID = 'Paid'
+    NOT_PAID = 'Not_Paid'
+    REFUNDED = 'Refunded'
+
+
     TICKET_STATUSES = ((BOOKED, 'Booked'),
                        (CANCELLED, 'Cancelled'),
                        (CONFIRMED,'Confirmed'))
+    PAYMENT_STATUSES =((PAID, 'Paid'),
+                       (NOT_PAID ,'Not_Paid'),
+                       (REFUNDED , 'Refunded'))
 
     username = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
@@ -59,6 +67,7 @@ class Book(models.Model):
     nos = models.DecimalField(decimal_places=0, max_digits=2)
     price = models.DecimalField(decimal_places=2, max_digits=6)
     status = models.CharField(choices=TICKET_STATUSES, default=BOOKED, max_length=15)
+    payment_status = models.CharField(choices= PAYMENT_STATUSES, default=NOT_PAID, max_length=30)
     date = models.DateField()
     time = models.TimeField()
 
