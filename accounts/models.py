@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-
+import qrcode
+from io import BytesIO
+from django.core.files import File
+from PIL import Image, ImageDraw
 # Create your models here.
 class User(AbstractUser):
     is_guser = models.BooleanField(default=False)
@@ -76,3 +79,36 @@ class Book(models.Model):
 
 
 
+class Ticket(models.Model):
+    name = models.CharField(max_length=100)
+    code = models.ImageField(blank=True, upload_to='code')
+
+
+
+
+    @property
+    def imageURL(self):
+        """
+        This Function is to fetch the respective product image without gettting an error
+        :param: self
+        :return: url 
+        """
+        try:
+            url = self.code.url
+        except:
+            url = ''
+        return url
+
+    def __str__(self) -> str:
+        return self.name
+
+    def save(self, *args, **kwargs):
+        qr_image = qrcode.make(self.name)
+        qr_offset = Image.new('RGB', (310,310), 'white')
+        qr_offset.paste(qr_image)
+        files_name = f'{self.name}-{self.id}qr.png'
+        stream = BytesIO()
+        qr_offset.save(stream, 'PNG')
+        self.code.save(files_name, File(stream), save=False)
+        qr_offset.close()
+        super().save(*args, **kwargs)

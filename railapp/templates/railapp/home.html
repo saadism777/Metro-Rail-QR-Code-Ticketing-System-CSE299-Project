@@ -75,6 +75,16 @@ textarea.form-control{
 </style>
 
 <body>
+
+
+  <div>
+    test going on
+    {% for row in test %}
+    <p>{{row.name}} </p><br> {{row.code}}
+    <br> {{row.imageURL}}
+    <img src="{{row.imageURL}}">
+  </div>
+  {% endfor %}
 {% comment %} <img src="{% static 'images/metrorailimage.jpg' %}" alt="Second slide">
 {% static 'images/metrorailimage.jpg' %} {% endcomment %}
 

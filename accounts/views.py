@@ -115,7 +115,7 @@ class TrainMasterSignUpView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
-        #login(self.request, user)
+        login(self.request, user)
         return redirect('home')
 
 
@@ -139,7 +139,7 @@ def search(request):
     else:
             return render(request, 'search.html')
 
-
+@login_required(login_url='log')
 def createOrder(request):
     context = {}
     form = OrderForm()
@@ -173,6 +173,7 @@ def createOrder(request):
     context = {'form':form}
     return render(request, 'order_form.html', context)
 
+@login_required(login_url='log')
 def payment(request,pk):
     context = {}
     book = Book.objects.get(id=pk)
@@ -194,7 +195,7 @@ def payment(request,pk):
     context = {'form':form}
     return render(request, 'order_form.html',context)
 
-
+@login_required(login_url='log')
 def cancellings(request,pk):
     context = {}
     book = Book.objects.get(id=pk)
@@ -216,7 +217,7 @@ def cancellings(request,pk):
       
 
 
-
+@login_required(login_url='log')
 def seebookings(request,new={}):
     context = {}
     username_r = request.user.username

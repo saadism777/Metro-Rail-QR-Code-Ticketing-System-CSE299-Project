@@ -1,10 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.http import HttpResponse
 from .models import *
 from railapp import models
-from accounts.models import Book
+from accounts.models import Book,Ticket
 from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 def home(request):
@@ -20,7 +21,8 @@ def home(request):
     try:
         post_list=Announcement.objects.order_by('created_on').reverse()
         post_list_2=Announcement.objects.latest('created_on')
-        context = {'post_list':post_list, 'post_list_2':post_list_2}
+        test=Ticket.objects.all()
+        context = {'post_list':post_list, 'post_list_2':post_list_2, 'test':test}
     except ObjectDoesNotExist:
         context={}
     
@@ -61,7 +63,7 @@ def faq(request):
     return render(request, 'railapp/faq.html', content)
 
 
-    
+@login_required(login_url='log')  
 def userprofile(request,new={}):
     context = {}
     username_r = request.user.username
@@ -71,5 +73,7 @@ def userprofile(request,new={}):
     else:
         context["error"] = "Sorry no buses booked"
         return render(request, 'railapp/userprofile.html', context)
+
+@login_required(login_url='log')
 def trainmasterprofile(request):
     return render(request, 'railapp/trainmasterprofile.html')
