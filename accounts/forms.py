@@ -56,7 +56,7 @@ class TrainMasterSignUpForm(UserCreationForm):
         
         trainmaster.save()
 
-        return trainmaster
+        return user
 
 class OrderForm(ModelForm):
     class Meta:

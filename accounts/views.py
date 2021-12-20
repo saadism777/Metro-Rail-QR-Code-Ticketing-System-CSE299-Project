@@ -115,7 +115,7 @@ class TrainMasterSignUpView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
-        #login(self.request, user)
+        login(self.request, user)
         return redirect('home')
 
 
@@ -139,7 +139,7 @@ def search(request):
     else:
             return render(request, 'search.html')
 
-
+@login_required(login_url='log')
 def createOrder(request):
     context = {}
     form = OrderForm()
@@ -173,6 +173,7 @@ def createOrder(request):
     context = {'form':form}
     return render(request, 'order_form.html', context)
 
+@login_required(login_url='log')
 def payment(request,pk):
     context = {}
     book = Book.objects.get(id=pk)
@@ -180,7 +181,7 @@ def payment(request,pk):
     if request.method =='POST':
         form = OrderForm(request.POST, instance=book)
         if book.payment_status=='Not_Paid':
-            Book.objects.filter(id=pk).update(payment_status='Paid')
+            Book.objects.filter(id=pk).update(payment_status='Paid',status='Confirmed',is_paid=True)
             return render(request, 'payment.html')
             
         elif book.payment_status=='Refunded':
@@ -194,14 +195,14 @@ def payment(request,pk):
     context = {'form':form}
     return render(request, 'order_form.html',context)
 
-
+@login_required(login_url='log')
 def cancellings(request,pk):
     context = {}
     book = Book.objects.get(id=pk)
     form = OrderForm(instance=book)
     if request.method =='POST':
         if book.payment_status=='Paid':
-            Book.objects.filter(id=pk).update(payment_status='Refunded')
+            Book.objects.filter(id=pk).update(payment_status='Refunded',status='Cancelled',is_paid=False,is_refunded=True)
             return redirect('seebookings')
         elif book.payment_status=='Not_Paid':
             context["error"] = "Booking Cancelled"
@@ -216,7 +217,7 @@ def cancellings(request,pk):
       
 
 
-
+@login_required(login_url='log')
 def seebookings(request,new={}):
     context = {}
     username_r = request.user.username

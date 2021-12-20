@@ -13,3 +13,4 @@ admin.site.register(TrainMaster)
 
 admin.site.register(Route)
 admin.site.register(Book)
+# admin.site.register(Ticket)
