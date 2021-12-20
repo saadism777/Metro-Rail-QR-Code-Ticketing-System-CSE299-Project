@@ -181,7 +181,7 @@ def payment(request,pk):
     if request.method =='POST':
         form = OrderForm(request.POST, instance=book)
         if book.payment_status=='Not_Paid':
-            Book.objects.filter(id=pk).update(payment_status='Paid')
+            Book.objects.filter(id=pk).update(payment_status='Paid',status='Confirmed',is_paid=True)
             return render(request, 'payment.html')
             
         elif book.payment_status=='Refunded':
@@ -202,7 +202,7 @@ def cancellings(request,pk):
     form = OrderForm(instance=book)
     if request.method =='POST':
         if book.payment_status=='Paid':
-            Book.objects.filter(id=pk).update(payment_status='Refunded')
+            Book.objects.filter(id=pk).update(payment_status='Refunded',status='Cancelled',is_paid=False,is_refunded=True)
             return redirect('seebookings')
         elif book.payment_status=='Not_Paid':
             context["error"] = "Booking Cancelled"

@@ -120,6 +120,7 @@ width: 66rem;
               <td>DATE</td>
               <td>TIME</td>
               <td>STATUS</td>
+              <td>QR Image</td>
 
 
               </thead>
@@ -133,7 +134,7 @@ width: 66rem;
                   <td>{{row.date}}</td>
                   <td>{{row.time}}</td>
                   <td>{{row.status}}</td>
-
+                  <td><img src="{{row.imageURL}}"></td>
 
               </tr>
               {% endfor %}

@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from .models import *
 from railapp import models
-from accounts.models import Book,Ticket
+from accounts.models import Book
 from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 def home(request):
@@ -21,7 +21,7 @@ def home(request):
     try:
         post_list=Announcement.objects.order_by('created_on').reverse()
         post_list_2=Announcement.objects.latest('created_on')
-        test=Ticket.objects.all()
+        test=Book.objects.all()
         context = {'post_list':post_list, 'post_list_2':post_list_2, 'test':test}
     except ObjectDoesNotExist:
         context={}
