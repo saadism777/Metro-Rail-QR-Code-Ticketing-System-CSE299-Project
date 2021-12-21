@@ -52,15 +52,16 @@ def checkout(request):
     return render(request, 'railapp/checkout.html')
 def Confirmation(request):
     return render(request, 'railapp/confirmation.html')
+    
 def faq(request):
-    content={}
-    if request.user.is_authenticated:
-        ques_obj = Questions.objects.all()
-        ans_obj = Answers.objects.all()
-        content={'ques_obj':ques_obj, 'ans_obj':ans_obj}
-    return render(request, 'railapp/faq.html', content)
-
-
+    already_answers=Question.objects.filter(answered=True)
+    without_answers=Question.objects.filter(answered=False)
+    
+    context={
+        'already_answers':already_answers,
+        'without_answers':without_answers
+    }
+    return render(request, 'railapp/faq.html', context)
     
 def userprofile(request,new={}):
     context = {}

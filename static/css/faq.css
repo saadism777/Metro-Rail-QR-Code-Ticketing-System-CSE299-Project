@@ -8,14 +8,23 @@
     box-shadow: 0 4px 8px -3px rgba(0, 0, 0, 0.3);
   }
   
-  .faqs-container h2 {
+  .faqs-container h1{
     padding: 4px 32px;
     font-size: 2rem;
     text-align: center;
-    background-color: rgba(209, 185, 50, 0.89);
+    background-color: rgba(197, 174, 43, 0.89);
     border-radius: 10rem;
   }
-  
+
+  .faqs-container h2{
+    padding: 4px 32px;
+    font-size: 2rem;
+    text-align: center;
+    background-color: rgba(66, 223, 45, 0.89);
+    border-radius: 10rem;
+  }
+
+
   .faqs-container .faq-header {
     display: flex;
     background: #343b43;
