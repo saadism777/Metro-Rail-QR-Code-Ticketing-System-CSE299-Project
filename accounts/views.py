@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.decorators import login_required
-
+import datetime
 from django.views.generic import CreateView
 
 from .forms import GeneralUserSignUpForm,TrainMasterSignUpForm,OrderForm
@@ -228,6 +228,18 @@ def seebookings(request,new={}):
         context["error"] = "Sorry no route booked"
         return render(request, 'search.html', context)
 
+
+def schedule(request):
+    date_now = datetime.datetime.now().date()
+    routeList = Route.objects.filter(date=date_now)
+
+    context = {'routeList' : routeList}
+    return render(request, 'schedule.html', context)
+
+def seeAll(request):
+    routeList = Route.objects.all()
+    context = {'routeList' : routeList}
+    return render(request, 'seeAll.html', context)
 
 
 

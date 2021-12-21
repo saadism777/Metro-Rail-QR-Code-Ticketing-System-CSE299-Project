@@ -16,4 +16,7 @@ urlpatterns = [
 
   path('cancellings/<str:pk>/', views.cancellings, name="cancellings"),
   path('payments/<str:pk>/', views.payment, name="payments"),
+  path('schedule', views.schedule, name="schedule"),
+  path('seeall', views.seeAll, name="seeall"),
+  
 ]

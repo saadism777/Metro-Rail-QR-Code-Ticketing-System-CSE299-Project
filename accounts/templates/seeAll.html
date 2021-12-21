@@ -1,0 +1,58 @@
+{% extends 'railapp/home.html' %}
+
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/schedule.css'%}">
+    <title>Table</title>
+ 
+
+</head>
+
+
+
+<body>
+    <div class="filter">
+
+    </div>
+    <table>
+        <tr id="header">
+            <th>ID</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Number of Seats</th>
+            <th>Number of Seats Remaining</th>
+            <th>Price</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+
+        {% for row in routeList %}
+        <tr>
+            <td>{{row.routeId}}</td>
+            <td>{{row.source}}</td>
+            <td>{{row.dest}}</td>
+            <td>{{row.nos}}</td>
+            <td>{{row.rem}}</td>
+            <td>{{row.price}}</td>
+            <td>{{row.date}}</td>
+            <td>{{row.time}}</td>
+
+        </tr>
+        {% endfor %}
+        
+        
+    </table>
+
+   
+
+</body>
+
+
+</html>
+{% endblock %}
