@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import User,GeneralUser, TrainMaster
+from accounts.models import User
 
 
 class Contact(models.Model):
@@ -10,27 +10,26 @@ class Contact(models.Model):
          return self.name
 
 
-class Questions(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    title = models.TextField()
-    created_on = models.DateTimeField(auto_now=True)
-    updated_on = models.DateTimeField(auto_now_add=True)
-
-    def save(self, *args, **kwargs):
-        super(Questions, self).save(*args, **kwargs)
-
-    def __unicode__(self):
-        return self.title
-
-
-class Answers(models.Model):
+class Question(models.Model):
+    question = models.CharField(max_length=300)
+    answered = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    question = models.ForeignKey(Questions, on_delete=models.CASCADE)
-    answer_text = models.TextField()
-    is_anonymous = models.BooleanField(default=False)
+    votesscore = models.IntegerField(default='0')
+    amountofvotes = models.IntegerField(default='0')
 
-    def __unicode__(self):
-        return self.id
+    def __str__(self):
+        return self.question
+
+
+class Answer(models.Model):
+    question_id = models.ForeignKey(Question, on_delete=models.CASCADE, blank=False, null=True)
+    answer = models.TextField(max_length=1000)
+    created = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.answer
 
 class Announcement(models.Model):
     title = models.CharField(max_length=200, unique=True)

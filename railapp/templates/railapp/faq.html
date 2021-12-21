@@ -9,27 +9,37 @@
     <title>FAQ</title>
     <link rel="stylesheet" href="{% static 'css/faq.css'%}" />
   </head>
+
   <body>
     <div class="faqs-container">
-      <h2>Frequently Asked Questions</h2>
-
-     
-      welcome {{userdetail.username}}
-          <br/>
-          Asked Questions.
-          <br/>
-          {% for question in questions %}
-          <li>{{question.title}}</li>
-          {% endfor %}
-          <br/>
-          Answers.
-          {% for answer in answers %}
-          <li>{{answer.answer_text}} by {{answer.user.username}} </li>
-          {% endfor %}
-      
+      <h1>Questions with answers:</h1>
+          <ul>
+              {% for question in already_answers %}
+                  <li>
+                      <h2>{{ question }} ..@{{ question.user }}</h2>
+                      {% endfor %}
+                      <br>
+                      {% for answer in answer_contents %}
+                          <h2>{{ answer }}..@{{answer.user}}</h2>
+                      {% endfor %}
+                  </li>
+              
+          </ul>
+      <h1>Questions Without Answer</h1>
+          <ul>
+              {% for question in without_answers %}
+              <li>
+                  <h2>{{ question }}</h2>
+                  <br>
+                  {% for answer in question.answer_set.all %}
+                      {{answer}}
+                  {% endfor %}   
+              </li>
+              {% endfor %}
+          </ul>
     </div>
-
     <script src="{% static 'js/faq.js'%}"></script>
   </body>
+  </html>
 </html>
 {% endblock content %}

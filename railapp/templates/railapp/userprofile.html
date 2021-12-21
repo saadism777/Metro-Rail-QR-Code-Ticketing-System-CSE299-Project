@@ -9,21 +9,21 @@
     margin-left: 11rem;
   }
   .thistory{
-margin:auto;
-width: 66rem;
+    margin:auto;
+    width: 66rem;
   } 
   .container{
     padding: 4rem!important;
     margin-top: 5rem;
-}
-.form-control {
-  border: 1px solid #cfd1d8;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: erem;
-  font-size: .825rem;
-  background: #343b43;
-  color: #2e323c;
+  }
+  .form-control {
+    border: 1px solid #cfd1d8;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: erem;
+    font-size: .825rem;
+    background: #343b43;
+    color: #2e323c;
 }
 
 .card {
@@ -77,8 +77,9 @@ width: 66rem;
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
           <div class="form-group">
             <label for="phone">Phone</label>
-            <h6 style="color:white;">? {{user.guser.phone_number}} </h6>
-            
+            {% for ggg in gguser %}
+            <h6 style="color:white;">{{ggg.phone_number}} </h6>
+            {% endfor %}
           </div>
         </div>
         
@@ -86,7 +87,9 @@ width: 66rem;
       <div class="row ">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
           <h6 class="mt-3 mb-2">Address</h6>
-          <h6 style="color:white;">? {{ user.guser.location }} </h6>
+          {% for ggg in gguser %}
+          <h6 style="color:white;">{{ ggg.location }} </h6>
+          {% endfor %}
         </div>
         
       </div>
@@ -120,7 +123,8 @@ width: 66rem;
               <td>DATE</td>
               <td>TIME</td>
               <td>STATUS</td>
-              <td>QR Image</td>
+              <td>TICKET STATUS</td>
+              <td>QR IMAGE</td>
 
 
               </thead>
@@ -134,7 +138,8 @@ width: 66rem;
                   <td>{{row.date}}</td>
                   <td>{{row.time}}</td>
                   <td>{{row.status}}</td>
-                  <td><img src="{{row.imageURL}}"></td>
+                  <td>{{row.payment_status}}
+                  <td><img style="width:6rem" src="{{row.imageURL}}"></td>
 
               </tr>
               {% endfor %}

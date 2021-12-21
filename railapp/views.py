@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from .models import *
 from railapp import models
-from accounts.models import Book
+from accounts.models import Book, GeneralUser
 from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 def home(request):
@@ -55,21 +55,28 @@ def checkout(request):
 def Confirmation(request):
     return render(request, 'railapp/confirmation.html')
 def faq(request):
-    content={}
-    if request.user.is_authenticated:
-        ques_obj = Questions.objects.all()
-        ans_obj = Answers.objects.all()
-        content={'ques_obj':ques_obj, 'ans_obj':ans_obj}
-    return render(request, 'railapp/faq.html', content)
+    already_answers=Question.objects.filter(answered=True)
+    without_answers=Question.objects.filter(answered=False)
+    answer_contents=Answer.objects.all()
+    context={
+        'already_answers':already_answers,
+        'without_answers':without_answers,
+        'answer_contents':answer_contents
+    }
+    return render(request, 'railapp/faq.html', context)
 
 
 @login_required(login_url='log')  
 def userprofile(request,new={}):
-    context = {}
+    
+    
     username_r = request.user.username
+    user_r = request.user
     book_list = Book.objects.filter(username=username_r)
+    gguser = GeneralUser.objects.filter(user=user_r)
+    context = { 'gguser':gguser, 'book_list':book_list }
     if book_list:
-        return render(request, 'railapp/userprofile.html', locals())
+        return render(request, 'railapp/userprofile.html', context)
     else:
         context["error"] = "Sorry no buses booked"
         return render(request, 'railapp/userprofile.html', context)
