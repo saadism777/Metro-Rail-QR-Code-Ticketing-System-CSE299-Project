@@ -13,7 +13,37 @@ from django.views.generic import CreateView
 from .forms import GeneralUserSignUpForm,TrainMasterSignUpForm,OrderForm
 from .models import User,GeneralUser,Book,Route
 
+from django.http import FileResponse
+import io
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
+from io import BytesIO
+from django.http import HttpResponse
+from django.template.loader import get_template
 
+from xhtml2pdf import pisa
+
+def ticket_pdf(request):
+    buf = io.BytesIO()
+    c= canvas.Canvas(buf, pagesize=letter, bottomup=0)
+    textob = c.beginText()
+    textob.setTextOrigin(inch, inch)
+    textob.setFont("Helvetica", 14)
+    lines = [
+        "Line 1",
+        "Line 2",
+        "Line 3",
+    ]
+   
+    for line in lines:
+        textob.textLine(line)
+    c.drawText(textob)
+    c.showPage()
+    c.save()
+    buf.seek(0)
+
+    return FileResponse(buf, as_attachment=True,filename='ticket.pdf')
 
 
 

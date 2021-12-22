@@ -19,5 +19,6 @@ urlpatterns = [
   path('schedule', views.schedule, name="schedule"),
   path('seeall', views.seeAll, name="seeall"),
   path('seats', views.seats, name="seats"),
+  path('ticket_pdf', views.ticket_pdf, name="ticket_pdf"),
   
 ]

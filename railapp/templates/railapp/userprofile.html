@@ -125,6 +125,7 @@
               <td>STATUS</td>
               <td>TICKET STATUS</td>
               <td>QR IMAGE</td>
+              <td>TICKET</td>
 
 
               </thead>
@@ -139,8 +140,11 @@
                   <td>{{row.time}}</td>
                   <td>{{row.status}}</td>
                   <td>{{row.payment_status}}
-                  <td><img style="width:6rem" src="{{row.imageURL}}"></td>
-
+                  {% if row.is_paid %}
+                      <td><img style="width:6rem" src="{{row.imageURL}}"></td>
+                      <td><a href="{% url 'ticket_pdf' %}">Download Ticket</a></td>
+                  {% endif %}
+                  
               </tr>
               {% endfor %}
               </thead>
