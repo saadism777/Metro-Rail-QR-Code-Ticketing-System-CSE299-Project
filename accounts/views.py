@@ -21,24 +21,42 @@ from reportlab.lib.pagesizes import letter
 from io import BytesIO
 from django.http import HttpResponse
 from django.template.loader import get_template
+from reportlab.platypus import SimpleDocTemplate, Image
 
-from xhtml2pdf import pisa
+
 
 def ticket_pdf(request):
     buf = io.BytesIO()
+    username_r = request.user.username
     c= canvas.Canvas(buf, pagesize=letter, bottomup=0)
     textob = c.beginText()
     textob.setTextOrigin(inch, inch)
     textob.setFont("Helvetica", 14)
-    lines = [
-        "Line 1",
-        "Line 2",
-        "Line 3",
-    ]
-   
+    lines = []
+    ticket = Book.objects.filter(username=username_r,payment_status='Paid')
+    for tickets in ticket:
+        lines.append("Ticket Details")
+        lines.append("Route Id: "+ str(tickets.routeid))
+        lines.append("Username: "+tickets.username)
+        lines.append("Source: "+tickets.source)
+        lines.append("Destination: "+tickets.dest)
+        lines.append("Status: "+ tickets.status)
+        lines.append("Order Id: "+tickets.order_id)
+        lines.append("Price: "+ str(tickets.price))
+        lines.append("Number of Seats: "+ str(tickets.nos))
+        lines.append("Date: "+ str(tickets.date))
+        lines.append("Time: "+ str(tickets.time))
+        lines.append(" ")
+        lines.append(" ")
+        lines.append(" ")
+
+        
+      
+
     for line in lines:
         textob.textLine(line)
     c.drawText(textob)
+    
     c.showPage()
     c.save()
     buf.seek(0)
