@@ -9,6 +9,7 @@
 {% url 'userprofile' as userprofile %}
 {% url 'trainmasterprofile' as trainmasterprofile %}
 {% url 'schedule' as schedule %}
+{% url 'seats' as seats %}
 
 <html>
 <head>
@@ -61,7 +62,7 @@
         
         </ul>
         {% elif request.user.is_authenticated and user.is_trainmaster == True %}
-        <li class="nav-item"><a class="navlink" href="#" data-hover="Seats">Seats</a></li>
+        <li class="nav-item"><a class="navlink" href="{% url 'seats' %}" data-hover="Seats">Seats</a></li>
         <li class="nav-item {% if request.path == trainmasterprofile %} current {% endif %}"><a class="navlink" href="{% url 'trainmasterprofile' %}" data-hover="Profile">Profile</a></li>
         <li class="nav-item"><a class="navlink" href="{% url 'log_out' %}" data-hover="Log Out">Log Out</a></li>
         <script type="text/javascript"> 

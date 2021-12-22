@@ -240,6 +240,14 @@ def seeAll(request):
     routeList = Route.objects.all()
     context = {'routeList' : routeList}
     return render(request, 'seeAll.html', context)
+def seats(request):
+    date_now = datetime.datetime.now().date()
+    routeList = Route.objects.filter(date=date_now)
+    
+    
+    context = {'routeList' : routeList,
+              }
+    return render(request, 'seats.html', context)
 
 
 

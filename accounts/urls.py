@@ -18,5 +18,6 @@ urlpatterns = [
   path('payments/<str:pk>/', views.payment, name="payments"),
   path('schedule', views.schedule, name="schedule"),
   path('seeall', views.seeAll, name="seeall"),
+  path('seats', views.seats, name="seats"),
   
 ]

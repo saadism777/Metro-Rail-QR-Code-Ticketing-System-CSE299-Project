@@ -38,8 +38,10 @@
             <td><p> Please Book Again </p>
         {% elif row.is_paid == False %}
             <td><a class="btn btn-sm btn-warning" href="{% url 'payments' row.id%}">Make Payment</a></td>
+            <td></td>
         {% elif row.is_paid == True %}
             <td><a class="btn btn-sm btn-danger" href="{% url 'cancellings' row.id%}">Cancel Booking</a></td>
+            <td></td>
        
         {% endif %}
 		
