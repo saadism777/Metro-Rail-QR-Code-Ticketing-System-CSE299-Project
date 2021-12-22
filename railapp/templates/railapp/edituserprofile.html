@@ -1,0 +1,111 @@
+{% extends 'railapp/main.html' %}
+{% block content %}
+{% load static %}
+<head>
+  <title>Profile</title>
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+<style>
+  .gutters{
+    margin-left: 1rem;
+  }
+ 
+  .container{
+    padding: 4rem!important;
+    margin-top: 5rem;
+  }
+  .form-control {
+    border: 1px solid #2a3970;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: erem;
+    font-size: .825rem;
+    background: #343b43;
+    color: #f5f6f7;
+}
+
+.card {
+  background: #343b43;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 3rem;
+  border: 0;
+  margin-bottom: 1rem;
+}
+
+
+
+</style>
+</head>
+<body>
+
+    <div class="container">
+          
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h6 class="mb-2 text-primary">Personal Details</h6>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="enter user name" value="{{user.username}}">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="eMail" placeholder="Email" value="{{user.email}}">
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="first name">First Name</label>
+                            <input type="text" class="form-control" id="phone" placeholder="first Name" value="{{user.first_name}}">
+                        </div>
+                    </div>
+                   
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="url" class="form-control" id="website" placeholder="enter last name" value="{{ user.last_name }}">
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="phone">Phone</label>   
+                            <input type="text" class="form-control" id="phone" placeholder="Eneter Phone" value="{{guser.phone_number}}">
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="phone">Adress</label>
+                            <input type="text" class="form-control" id="phone" placeholder="enter loaction" value="{{user.location}}">        
+                        </div>
+                    </div>
+                   
+
+
+                </div>
+                
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="text-right">
+                            <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+                            <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+<body>
+{% endblock content %}

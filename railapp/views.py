@@ -7,6 +7,7 @@ from .models import *
 from railapp import models
 from accounts.models import Book, GeneralUser
 from django.core.exceptions import ObjectDoesNotExist
+from .forms import UserForm
 # Create your views here.
 def home(request):
     if request.method=="POST":
@@ -84,3 +85,14 @@ def userprofile(request,new={}):
 @login_required(login_url='log')
 def trainmasterprofile(request):
     return render(request, 'railapp/trainmasterprofile.html')
+
+def EditUserprofile(request):
+    user=request.user 
+    form=UserForm(instance=user)
+    
+    if request.method == 'POST':
+        form=UserForm(request.POST,instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('userprofile')
+    return render(request, 'railapp/edituserprofile.html', {'form':form})
