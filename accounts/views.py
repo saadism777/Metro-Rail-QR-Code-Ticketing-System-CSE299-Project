@@ -13,56 +13,40 @@ from django.views.generic import CreateView
 from .forms import GeneralUserSignUpForm,TrainMasterSignUpForm,OrderForm
 from .models import User,GeneralUser,Book,Route
 
-from django.http import FileResponse
-import io
-from reportlab.pdfgen import canvas
-from reportlab.lib.units import inch
-from reportlab.lib.pagesizes import letter
+from django.http import HttpResponse
+from django.views.generic import View
+from django.template.loader import get_template
+
+
 from io import BytesIO
 from django.http import HttpResponse
 from django.template.loader import get_template
-from reportlab.platypus import SimpleDocTemplate, Image
 
+from xhtml2pdf import pisa
 
+def generatepdf(request,pkpk):
+    book = Book.objects.filter(id=pkpk)
 
-def ticket_pdf(request):
-    buf = io.BytesIO()
-    username_r = request.user.username
-    c= canvas.Canvas(buf, pagesize=letter, bottomup=0)
-    textob = c.beginText()
-    textob.setTextOrigin(inch, inch)
-    textob.setFont("Helvetica", 14)
-    lines = []
-    ticket = Book.objects.filter(username=username_r,payment_status='Paid')
-    for tickets in ticket:
-        lines.append("Ticket Details")
-        lines.append("Route Id: "+ str(tickets.routeid))
-        lines.append("Username: "+tickets.username)
-        lines.append("Source: "+tickets.source)
-        lines.append("Destination: "+tickets.dest)
-        lines.append("Status: "+ tickets.status)
-        lines.append("Order Id: "+tickets.order_id)
-        lines.append("Price: "+ str(tickets.price))
-        lines.append("Number of Seats: "+ str(tickets.nos))
-        lines.append("Date: "+ str(tickets.date))
-        lines.append("Time: "+ str(tickets.time))
-        lines.append(" ")
-        lines.append(" ")
-        lines.append(" ")
+    template_path = 'invoice.html'
 
+    context = {'book': book}
+
+    response = HttpResponse(content_type='application/pdf')
+
+    response['Content-Disposition'] = 'filename="ticket.pdf"'
+
+    template = get_template(template_path)
+
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
+    # if error then show some funy view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
         
-      
-
-    for line in lines:
-        textob.textLine(line)
-    c.drawText(textob)
-    
-    c.showPage()
-    c.save()
-    buf.seek(0)
-
-    return FileResponse(buf, as_attachment=True,filename='ticket.pdf')
-
 
 
 def SignUp(request):

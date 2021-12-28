@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Title</title>
+        <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;  
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+        </style>
+    </head>
+    <body>
+        {% for row in book %}
+            <div class='wrapper'>
+                <div class='header'>
+                    <p class='title'>Booking Id: {{row.id}} </p>
+                </div>
+            <div>
+            <div class='details'>
+                <b>Username:</b> &nbsp;  {{row.username}}<br/>
+                <b>Order id:</b> &nbsp;{{row.order_id}}<br/>
+                <b>Source:</b> &nbsp; {{row.source}}<br/>
+                <b>Destination:</b>&nbsp;  {{row.dest}}<br/>
+                <b>Amount:</b> &nbsp; {{row.price}}  <br/>
+                <b>Number of Seats:</b>&nbsp;  {{row.nos}}<br/>
+                <b>Status:</b> &nbsp;  {{row.status}} <br/>
+                <b>Payment Status:</b>&nbsp;{{row.payment_status}}<br/>
+                <b>Date of arrival:</b>&nbsp; {{row.date}}<br/>
+                <b>Time of arrival:</b> &nbsp;  {{row.time}}<br/>
+                <b>QR Code:</b><br/> <img style="width:6rem" src="{{row.code.path}}"/><br/>
+                <br/>
+                <br/>
+                
+                
+                <hr class='hrItem' />
+            </div>
+            </div>
+        {% endfor %}
+    </body>
+</html>

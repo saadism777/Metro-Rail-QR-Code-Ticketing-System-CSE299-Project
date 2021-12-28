@@ -1,0 +1,84 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>Invoice</title>
+  </head>
+  <body>
+    <h1>Invoice</h1>
+        
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+
+                <table class="table">
+                    <thead>
+                      <tr>
+                            <th>BOOKING ID</th>
+                            <th>ROUTE ID</th>
+                            <th>USER NAME</th>
+                            <th>SOURCE</th>
+                            <th>DESTINATION</th>
+                            <th>NUM OF SEATS</th>
+                            <th>PRICE</th>
+                            <th>DATE</th>
+                            <th>TIME</th>
+                            <th>STATUS</th>
+                            <th>PAYMENT STATUS</th>
+                            <th>QR Code</th>
+                            <th> </th>
+                            <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                     {% for row in book %}
+
+                        <tr>
+                            <td>{{row.id}}</td>
+                            <td>{{row.routeid}}</td>
+                            <td>{{row.username}}</td>
+                            
+                            <td>{{row.source}}</td>
+                            <td>{{row.dest}}</td>
+                            <td>{{row.nos}}</td>
+                            <td>{{row.price}}</td>
+                            <td>{{row.date}}</td>
+                            <td>{{row.time}}</td>
+                            <td>{{row.status}}</td>
+                            <td>{{row.payment_status}}</td>
+                            <td><img style="width:6rem" src="{{row.code.path}}"></td>
+                            <td></td>
+                        </tr>
+
+                      {% endfor %}
+                     
+                    </tbody>
+                  </table>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>
+</html>
+

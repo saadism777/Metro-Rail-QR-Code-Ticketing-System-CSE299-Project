@@ -132,6 +132,7 @@
               <thead style="background-color: #343b43;color: rgb(255, 255, 255);">
               {% for row in book_list %}
               <tr>
+                  
                   <td>{{row.source}}</td>
                   <td>{{row.dest}}</td>
                   <td>{{row.nos}}</td>
@@ -142,7 +143,7 @@
                   <td>{{row.payment_status}}
                   {% if row.is_paid %}
                       <td><img style="width:6rem" src="{{row.imageURL}}"></td>
-                      <td><a href="{% url 'ticket_pdf' %}">Download Ticket</a></td>
+                      <td><a href="{% url 'generatepdf' row.id %}">Download Ticket</a></td>
                   {% endif %}
                   
               </tr>
@@ -155,5 +156,6 @@
     </div>
     </div>
     </div>
+    
   <body>
   {% endblock content %}

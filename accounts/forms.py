@@ -66,3 +66,4 @@ class OrderForm(ModelForm):
             'routeid': forms.NumberInput(attrs={'class':'form-control'}),
             'nos': forms.NumberInput(attrs={'class':'form-control'})
         }
+
