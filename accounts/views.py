@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.views.generic import CreateView
 
-from .forms import GeneralUserSignUpForm,TrainMasterSignUpForm,OrderForm
+from .forms import GeneralUserSignUpForm,TrainMasterSignUpForm,OrderForm,UserUpdateForm,ProfileUpdateForm
 from .models import User,GeneralUser,Book,Route
 
 from django.http import HttpResponse
@@ -21,8 +21,42 @@ from django.template.loader import get_template
 from io import BytesIO
 from django.http import HttpResponse
 from django.template.loader import get_template
+from railapp.views import userprofile
 
 from xhtml2pdf import pisa
+
+@login_required(login_url='log')
+def userupdate(request):
+    user_r = request.user
+    gguser = GeneralUser.objects.filter(user=user_r)
+    if request.method == 'POST':
+        # request.user is user  data
+        if user_r is not None and user_r.is_guser:
+            user_form = UserUpdateForm(request.POST, instance=request.user)
+            profile_form = ProfileUpdateForm(
+                request.POST, instance=request.user.generaluser)
+            if user_form.is_valid() and profile_form.is_valid():
+                user_form.save()
+                profile_form.save()
+                messages.success(request, 'Your account has been updated!')
+                return redirect('userprofile')
+    else:
+       # category = Category.objects.all()
+        user_form = UserUpdateForm(instance=request.user)
+        # "userprofile" model -> OneToOneField relatinon with user
+        profile_form = ProfileUpdateForm(instance=request.user.generaluser)
+        
+        context = {
+            # 'category': category,
+            'user_form': user_form,
+            'profile_form': profile_form,
+           
+        }
+        return render(request, 'userupdate.html', context)
+
+
+
+
 
 def generatepdf(request,pkpk):
     book = Book.objects.filter(id=pkpk)
