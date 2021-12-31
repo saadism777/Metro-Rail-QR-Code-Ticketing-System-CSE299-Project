@@ -21,6 +21,7 @@ urlpatterns = [
   path('seats/', views.seats, name="seats"),
   path('generatepdf/<str:pkpk>/', views.generatepdf, name="generatepdf"),
   path('userupdate/' ,views.userupdate, name="userupdate"),
+  path('trainmasterupdate/' ,views.trainmaster_update, name="trainmasterupdate"),
  
   
 ]

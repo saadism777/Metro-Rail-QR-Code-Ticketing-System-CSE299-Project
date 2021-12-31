@@ -1,0 +1,19 @@
+
+{%  extends 'railapp/main.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <form style="background-color:#f1e896" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ user_form.as_p  }}
+            {{ profile_formTM.as_p  }}
+        </div>
+        
+        <div class="form-group">
+            
+            <button class="btn btn-sm btn-danger" type="submit">Update</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

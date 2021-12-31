@@ -74,23 +74,36 @@ class OrderForm(ModelForm):
             'nos': forms.NumberInput(attrs={'class':'form-control'})
         }
 
-class UserUpdateForm(UserChangeForm):
+class UserUpdateForm(forms.ModelForm):
+    
     class Meta:
         model = User
         fields = ('username', 'email', 'first_name', 'last_name')
         
         widgets = {
-            'username': forms.TextInput(attrs={'class': 'input', 'placeholder': 'username'}),
-            'email': forms.EmailInput(attrs={'class': 'input', 'placeholder': 'email'}),
-            'first_name': forms.TextInput(attrs={'class': 'input', 'placeholder': 'first_name'}),
-            'last_name': forms.TextInput(attrs={'class': 'input', 'placeholder': 'last_name'}),
+            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'username'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'email'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'first_name'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'last_name'}),
         }
-class ProfileUpdateForm(UserChangeForm):
+class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = GeneralUser
         fields = ('phone_number', 'location')
         widgets = {
-            'phone_number': TextInput(attrs={'class': 'input', 'placeholder': 'phone'}),
-            'location': TextInput(attrs={'class': 'input', 'placeholder': 'address'}),
+            'phone_number': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'phone'}),
+            'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'address'}),
+            
+        }
+
+class ProfileUpdateFormTrainMaster(forms.ModelForm):
+    
+    class Meta:
+        model = TrainMaster
+        fields = ('phone', 'location','licenseNumber')
+        widgets = {
+            'phone': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'phone'}),
+            'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'address'}),
+            'licenseNumber': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'License Number'}),
             
         }

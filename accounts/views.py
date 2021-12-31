@@ -10,8 +10,8 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.views.generic import CreateView
 
-from .forms import GeneralUserSignUpForm,TrainMasterSignUpForm,OrderForm,UserUpdateForm,ProfileUpdateForm
-from .models import User,GeneralUser,Book,Route
+from .forms import GeneralUserSignUpForm,TrainMasterSignUpForm,OrderForm,UserUpdateForm,ProfileUpdateForm,ProfileUpdateFormTrainMaster
+from .models import User,GeneralUser,Book,Route,TrainMaster
 
 from django.http import HttpResponse
 from django.views.generic import View
@@ -21,7 +21,7 @@ from django.template.loader import get_template
 from io import BytesIO
 from django.http import HttpResponse
 from django.template.loader import get_template
-from railapp.views import userprofile
+from railapp.views import userprofile,trainmasterprofile
 
 from xhtml2pdf import pisa
 
@@ -53,6 +53,36 @@ def userupdate(request):
            
         }
         return render(request, 'userupdate.html', context)
+
+
+@login_required(login_url='log')
+def trainmaster_update(request):
+    user_r = request.user
+    gguser = TrainMaster.objects.filter(user=user_r)
+    if request.method == 'POST':
+        # request.user is user  data
+        if user_r is not None and user_r.is_trainmaster:
+            user_form = UserUpdateForm(request.POST, instance=request.user)
+            profile_formTM = ProfileUpdateFormTrainMaster(
+                request.POST, instance=request.user.trainmaster)
+            if user_form.is_valid() and profile_formTM.is_valid():
+                user_form.save()
+                profile_formTM.save()
+                messages.success(request, 'Your account has been updated!')
+                return redirect('trainmasterprofile')
+    else:
+       # category = Category.objects.all()
+        user_form = UserUpdateForm(instance=request.user)
+        # "userprofile" model -> OneToOneField relatinon with user
+        profile_formTM = ProfileUpdateFormTrainMaster(instance=request.user.trainmaster)
+        
+        context = {
+            # 'category': category,
+            'user_form': user_form,
+            'profile_formTM': profile_formTM,
+           
+        }
+        return render(request, 'trainmasterupdate.html', context)
 
 
 
