@@ -37,7 +37,7 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<input name='date' class="form-control" type="date">
+										<input name='date' class="form-control" type="date" id="dateControl">
 										<span class="form-label">Select Date</span>
 									</div>
 								</div>
@@ -58,6 +58,7 @@
 	</div>
 
 	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
 		$('.form-control').each(function () {
 			floatedLabel($(this));
@@ -75,6 +76,24 @@
 				$field.removeClass('input-not-empty');
 			}
 		}
+	</script>
+	<script>
+        $(document).ready(function(){
+		$(function(){
+			var dtToday = new Date();
+
+			var month = dtToday.getMonth() + 1;
+			var day = dtToday.getDate();
+			var year = dtToday.getFullYear();
+			if(month < 10)
+			    month = '0' + month.toString();
+			if(day < 10)
+			    day = '0' + day.toString();
+			var maxDate= year + '-' + month +'-'+ day;
+			$('#dateControl').attr('min',maxDate)
+		});
+		})
+
 	</script>
 
 {% endblock content %}
