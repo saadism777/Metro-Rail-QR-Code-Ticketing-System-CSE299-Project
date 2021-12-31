@@ -333,7 +333,9 @@ def schedule(request):
     return render(request, 'schedule.html', context)
 
 def seeAll(request):
-    routeList = Route.objects.all()
+    
+    routeList = Route.objects.all().order_by('-date')
+
     context = {'routeList' : routeList}
     return render(request, 'seeAll.html', context)
 def seats(request):
