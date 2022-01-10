@@ -1,3 +1,5 @@
 # Metro-Rail-Management-System
-Undergraduate Project for the course CSE299
+## Undergraduate Project for the course CSE299
+### install requirements.txt before running project
+
 We have created a web-based Train Ticket Management System based on the latest Metro Rail Project in Dhaka. Our target is to create a reliable and fast experience for all the Metro Rail passengers, Taking a step ahead towards the visionary project of Digital Bangladesh. Our web-based application is fully functional with some very minor bugs and it is visually pleasing. It was built intending to have two kinds of users not just the passengers but also the trainmasters. Our webApp has bunch of functionalities that makes the lives of both passengers and trainmasters much easier as it makes their experience fluid and reduces their daily hassles. Passengers no longer need to stand in a line to wait for to buy tickets. They can now buy tickets online through our app very easily and that’s not all. Passenger doesn’t need to carry a physical ticket either as we’ve implemented a very useful digital ticket feature which has QR Code implemented that can be downloaded in the passenger’s phone right after the payment.
