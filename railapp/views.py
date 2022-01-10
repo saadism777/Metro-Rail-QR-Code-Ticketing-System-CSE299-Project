@@ -7,7 +7,8 @@ from .models import *
 from railapp import models
 from accounts.models import Book, GeneralUser
 from django.core.exceptions import ObjectDoesNotExist
-# Create your views here.
+
+# function for the homepage.
 def home(request):
     if request.method=="POST":
         print("This is post")
@@ -28,6 +29,7 @@ def home(request):
     
     return render(request, 'railapp/home.html', context)
 
+# function for the contact us page.
 def contact(request):
     if request.method=="POST":
         contact=Contact()
@@ -39,7 +41,7 @@ def contact(request):
         contact.subject=subject
         contact.save()
 
-
+        #sends it as an email
         send_mail(
              'message from' + name,
              subject,
@@ -50,10 +52,16 @@ def contact(request):
         return render(request, 'railapp/contact.html', {'name' : name})
     else:
         return render(request, 'railapp/contact.html',{})
+
+# function for the checkout page.
 def checkout(request):
     return render(request, 'railapp/checkout.html')
+
+# function for the confirmation page.
 def Confirmation(request):
     return render(request, 'railapp/confirmation.html')
+
+# function for the FAQ page.
 def faq(request):
     already_answers=Question.objects.filter(answered=True)
     without_answers=Question.objects.filter(answered=False)
@@ -65,11 +73,9 @@ def faq(request):
     }
     return render(request, 'railapp/faq.html', context)
 
-
+# function for the userprofile dashboard
 @login_required(login_url='log')  
 def userprofile(request,new={}):
-    
-    
     username_r = request.user.username
     user_r = request.user
     book_list = Book.objects.filter(username=username_r)
@@ -81,6 +87,7 @@ def userprofile(request,new={}):
         context["error"] = "Sorry no buses booked"
         return render(request, 'railapp/userprofile.html', context)
 
+# function for the trainmaster profile dashboard
 @login_required(login_url='log')
 def trainmasterprofile(request):
     return render(request, 'railapp/trainmasterprofile.html')

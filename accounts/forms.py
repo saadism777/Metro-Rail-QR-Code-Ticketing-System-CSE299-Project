@@ -6,6 +6,7 @@ from django.db import transaction
 
 from .models import GeneralUser, User, TrainMaster,Book
 
+#General User Form
 class GeneralUserSignUpForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
@@ -32,10 +33,7 @@ class GeneralUserSignUpForm(UserCreationForm):
         guser.save()
         return user
 
-
-
-
-
+#Train Master Form
 class TrainMasterSignUpForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
@@ -65,6 +63,7 @@ class TrainMasterSignUpForm(UserCreationForm):
 
         return user
 
+#Order Form
 class OrderForm(ModelForm):
     class Meta:
         model = Book
@@ -74,6 +73,7 @@ class OrderForm(ModelForm):
             'nos': forms.NumberInput(attrs={'class':'form-control'})
         }
 
+#User Update Form
 class UserUpdateForm(forms.ModelForm):
     
     class Meta:
@@ -86,6 +86,7 @@ class UserUpdateForm(forms.ModelForm):
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'first_name'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'last_name'}),
         }
+#General User Update Form
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = GeneralUser
@@ -95,7 +96,7 @@ class ProfileUpdateForm(forms.ModelForm):
             'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'address'}),
             
         }
-
+#TrainMaster User Update Form
 class ProfileUpdateFormTrainMaster(forms.ModelForm):
     
     class Meta:

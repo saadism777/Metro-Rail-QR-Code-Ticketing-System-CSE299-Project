@@ -1,7 +1,7 @@
 from django.db import models
 from accounts.models import User
 
-
+#Contact class for Contact Us page
 class Contact(models.Model):
     name=models.CharField(max_length=200)
     email=models.EmailField()
@@ -9,7 +9,7 @@ class Contact(models.Model):
     def __str__(self):
          return self.name
 
-
+#Question class for FAQ  page
 class Question(models.Model):
     question = models.CharField(max_length=300)
     answered = models.BooleanField(default=False)
@@ -21,7 +21,7 @@ class Question(models.Model):
     def __str__(self):
         return self.question
 
-
+#Answer class for FAQ  page
 class Answer(models.Model):
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE, blank=False, null=True)
     answer = models.TextField(max_length=1000)
@@ -31,6 +31,7 @@ class Answer(models.Model):
     def __str__(self):
         return self.answer
 
+#Question class for Announcement functionality
 class Announcement(models.Model):
     title = models.CharField(max_length=200, unique=True)
     username = models.CharField(max_length=200)

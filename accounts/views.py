@@ -3,28 +3,23 @@ from django.shortcuts import render,redirect
 from decimal import Decimal
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
-# Create your views here.
 from django.contrib import messages
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.decorators import login_required
 import datetime
 from django.views.generic import CreateView
-
 from .forms import GeneralUserSignUpForm,TrainMasterSignUpForm,OrderForm,UserUpdateForm,ProfileUpdateForm,ProfileUpdateFormTrainMaster
 from .models import User,GeneralUser,Book,Route,TrainMaster
-
 from django.http import HttpResponse
 from django.views.generic import View
 from django.template.loader import get_template
-
-
 from io import BytesIO
 from django.http import HttpResponse
 from django.template.loader import get_template
 from railapp.views import userprofile,trainmasterprofile
-
 from xhtml2pdf import pisa
 
+#User Profile Update for General User
 @login_required(login_url='log')
 def userupdate(request):
     user_r = request.user
@@ -54,7 +49,7 @@ def userupdate(request):
         }
         return render(request, 'userupdate.html', context)
 
-
+#Profile Update for Trainmaster User
 @login_required(login_url='log')
 def trainmaster_update(request):
     user_r = request.user
@@ -85,22 +80,14 @@ def trainmaster_update(request):
         return render(request, 'trainmasterupdate.html', context)
 
 
-
-
-
+#Function to generate pdf
 def generatepdf(request,pkpk):
     book = Book.objects.filter(id=pkpk)
-
     template_path = 'invoice.html'
-
     context = {'book': book}
-
     response = HttpResponse(content_type='application/pdf')
-
     response['Content-Disposition'] = 'filename="ticket.pdf"'
-
     template = get_template(template_path)
-
     html = template.render(context)
 
     # create a pdf
@@ -112,11 +99,11 @@ def generatepdf(request,pkpk):
     return response
         
 
-
+#Registerpage or Portal
 def SignUp(request):
 	return render(request,'register.html')
 
-
+#Login Function for General User
 def log(request):
     """
     This method is used to view the login page.
@@ -146,6 +133,7 @@ def log(request):
     context= {}
     return render(request, 'login.html', context)
 
+#Login Function for Trainmaster User
 def log2(request):
     """
     This method is used to view the login page.
@@ -175,6 +163,7 @@ def log2(request):
     context= {}
     return render(request, 'login.html', context)
 
+#Logout function for All User
 def log_out(request):
     """
     This method is used to logout the user and redirect them to the login page.
@@ -186,6 +175,7 @@ def log_out(request):
     logout(request)
     return redirect('log')
 
+#Registration of General Users
 class GeneralUserSignUpView(CreateView):
     model = User
     form_class = GeneralUserSignUpForm
@@ -200,6 +190,7 @@ class GeneralUserSignUpView(CreateView):
         login(self.request, user)
         return redirect('home')
 
+#Registration of Train Masters
 class TrainMasterSignUpView(CreateView):
     model = User
     form_class = TrainMasterSignUpForm
@@ -214,14 +205,13 @@ class TrainMasterSignUpView(CreateView):
         login(self.request, user)
         return redirect('home')
 
-
+#Searches Availlibility of Routes in Buy Ticket page
 @login_required(login_url='log')
 def search(request):
     context = {}
     if request.method == 'POST':
             p = request.POST.get('source')
             source_r= p.capitalize()
-            
             q = request.POST.get('destination')
             dest_r = q.capitalize()
             date_r = request.POST.get('date')
@@ -235,6 +225,7 @@ def search(request):
     else:
             return render(request, 'search.html')
 
+#Creates order, an object of the book class
 @login_required(login_url='log')
 def createOrder(request):
     context = {}
@@ -269,6 +260,7 @@ def createOrder(request):
     context = {'form':form}
     return render(request, 'order_form.html', context)
 
+#Function of ticket payment system
 @login_required(login_url='log')
 def payment(request,pk):
     context = {}
@@ -291,6 +283,7 @@ def payment(request,pk):
     context = {'form':form}
     return render(request, 'order_form.html',context)
 
+# Function for ticket cancellations
 @login_required(login_url='log')
 def cancellings(request,pk):
     context = {}
@@ -311,8 +304,7 @@ def cancellings(request,pk):
     context = {'form':form}
     return render(request, 'order_form.html',context)
       
-
-
+#Function to see bookings
 @login_required(login_url='log')
 def seebookings(request,new={}):
     context = {}
@@ -324,25 +316,23 @@ def seebookings(request,new={}):
         context["error"] = "Sorry no route booked"
         return render(request, 'search.html', context)
 
-
+#Function to see schedule
 def schedule(request):
     date_now = datetime.datetime.now().date()
     routeList = Route.objects.filter(date=date_now)
-
     context = {'routeList' : routeList}
     return render(request, 'schedule.html', context)
 
+#Function to see past schedules
 def seeAll(request):
-    
     routeList = Route.objects.all().order_by('-date')
-
     context = {'routeList' : routeList}
     return render(request, 'seeAll.html', context)
+
+#Function to see seat information
 def seats(request):
     date_now = datetime.datetime.now().date()
     routeList = Route.objects.filter(date=date_now)
-    
-    
     context = {'routeList' : routeList,
               }
     return render(request, 'seats.html', context)

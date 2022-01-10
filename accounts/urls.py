@@ -1,6 +1,5 @@
 from django.urls import path
 from .views import SignUp,GeneralUserSignUpView,TrainMasterSignUpView
-
 from . import views
 
 urlpatterns = [
@@ -13,7 +12,6 @@ urlpatterns = [
   path('search/', views.search, name="search"),
   path('create_order/', views.createOrder, name="create_order"),
   path('seebookings/', views.seebookings, name="seebookings"),
-
   path('cancellings/<str:pk>/', views.cancellings, name="cancellings"),
   path('payments/<str:pk>/', views.payment, name="payments"),
   path('schedule/', views.schedule, name="schedule"),
@@ -21,7 +19,5 @@ urlpatterns = [
   path('seats/', views.seats, name="seats"),
   path('generatepdf/<str:pkpk>/', views.generatepdf, name="generatepdf"),
   path('userupdate/' ,views.userupdate, name="userupdate"),
-  path('trainmasterupdate/' ,views.trainmaster_update, name="trainmasterupdate"),
- 
-  
+  path('trainmasterupdate/' ,views.trainmaster_update, name="trainmasterupdate"),  
 ]
