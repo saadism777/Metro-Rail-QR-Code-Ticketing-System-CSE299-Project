@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-4$ug-ki9gg5sy&6uf0z)_at=1%!xqf%ff1%+iy#v5eao(g25dl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','https://metro-rail-bd.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','metro-rail-bd.herokuapp.com']
 
 AUTH_USER_MODEL = 'accounts.User'
 
