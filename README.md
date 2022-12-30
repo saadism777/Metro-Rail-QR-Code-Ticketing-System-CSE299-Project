@@ -1,4 +1,4 @@
-# Metro-Rail-Management-System
+# Metro-Rail-QR-Code-Ticketing-System
 ## Undergraduate Project for the course CSE299
 ### install requirements.txt before running project
 
